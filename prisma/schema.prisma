@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String   @id @default(uuid())
+  name     String
+  email    String
+  password String
+  role     Role
+  profile  Profile?
+}
+
+enum Role {
+  OWNER
+  MEMBER
+}
+
+model Profile {
+  id               String    @id @default(uuid())
+  // user_id          String
+  user             User      @relation(fields: [user_id], references: [id])
+  user_id          String    @unique
+  display_name     String
+  profile_image    String
+  email            String
+  bio              String
+  upwork_profile   String
+  linkedin_profile String
+  github_profile   String
+  twitter_profile  String
+  personal_website String
+  education        String
+  // blogs
+  blogs            Blog[]
+  // projects
+  projects         Project[]
+
+  position       String
+  achievements   String
+  certifications String
+}
+
+model Blog {
+  id          String  @id @default(uuid())
+  image       String
+  title       String
+  // author_id   String
+  description String
+  // Profile     Profile[]
+  author      Profile @relation(fields: [author_id], references: [id])
+  author_id   String
+  tags        Tag[]
+}
+
+model Tag {
+  id    Int    @id
+  name  String
+  blogs Blog[]
+}
+
+model Project {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  author      Profile @relation(fields: [author_id], references: [id])
+  author_id   String
+}
