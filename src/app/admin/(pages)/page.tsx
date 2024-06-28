@@ -8,16 +8,13 @@ import LoginForm from "../_components/Forms/LoginForm";
 type Role = "OWNER" | "MEMBER";
 
 const page = async () => {
-    // const user = getUser();
-    // console.log(getUser);
     const cookie = cookies();
     const token = cookie.get("token");
     console.log(token);
     return (
-        <div>
-            <Header label="Admin Panel" />
+        <>
             <LoginForm></LoginForm>
-        </div>
+        </>
     );
 };
 

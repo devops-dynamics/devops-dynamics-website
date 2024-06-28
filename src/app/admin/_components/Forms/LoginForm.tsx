@@ -58,7 +58,7 @@ export default function LoginForm() {
                     onChange={(e) =>
                         setUser({ ...user, email: e.target.value })
                     }
-                    placeholder="email"
+                    placeholder="user@example.com"
                 />
             </div>
             <div className="space-y-2">
@@ -72,7 +72,7 @@ export default function LoginForm() {
                     onChange={(e) =>
                         setUser({ ...user, password: e.target.value })
                     }
-                    placeholder="password"
+                    placeholder="Password"
                 />
             </div>
             <Button onClick={onLogin}>Login here</Button>

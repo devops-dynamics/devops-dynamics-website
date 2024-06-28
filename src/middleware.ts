@@ -8,6 +8,7 @@ export function middleware(req: NextRequest) {
     if (isAdmin && !token) {
         return NextResponse.redirect(new URL("/admin", req.nextUrl));
     }
+
     if (path === "/admin" && token) {
         return NextResponse.redirect(new URL("/admin/profile", req.nextUrl));
     }

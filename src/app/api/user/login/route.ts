@@ -27,13 +27,12 @@ export async function POST(req: NextRequest) {
             id: user.id,
             role: user.role,
             email: user.email,
-            isValid: true,
         };
         console.log("tokenData:", tokenData);
 
         //  create data
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
-            expiresIn: "1h",
+            expiresIn: "2h",
         });
         // save in user's cookie
 
