@@ -29,7 +29,7 @@ model Profile {
   user_id          String    @unique
   display_name     String
   profile_image    String
-  email            String
+  email            String    @unique
   bio              String
   upwork_profile   String
   linkedin_profile String

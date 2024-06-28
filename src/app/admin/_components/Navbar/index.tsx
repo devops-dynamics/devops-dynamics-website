@@ -1,10 +1,8 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
-
 import { cn } from "@/lib/utils";
-// import { Icons } from "@/components/icons"
+
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -17,6 +15,11 @@ import {
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
+    {
+        label: "Profile",
+        path: "/admin/profile",
+        user: true,
+    },
     {
         label: "User",
         path: "/admin/user",

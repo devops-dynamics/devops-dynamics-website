@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
-import { use } from "react";
 
 interface User {
     id: string;

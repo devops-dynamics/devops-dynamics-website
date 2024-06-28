@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
             id: user.id,
             role: user.role,
             email: user.email,
+            isValid: true,
         };
         console.log("tokenData:", tokenData);
 
