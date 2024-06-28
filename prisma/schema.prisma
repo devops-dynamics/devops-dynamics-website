@@ -60,7 +60,7 @@ model Blog {
 }
 
 model Tag {
-  id    Int    @id
+  id    Int    @id @default(autoincrement())
   name  String
   blogs Blog[]
 }

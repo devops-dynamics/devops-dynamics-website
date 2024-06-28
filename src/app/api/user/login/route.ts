@@ -28,6 +28,8 @@ export async function POST(req: NextRequest) {
             role: user.role,
             email: user.email,
         };
+        console.log("tokenData:", tokenData);
+
         //  create data
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
             expiresIn: "1h",

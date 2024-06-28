@@ -2,19 +2,23 @@ import React from "react";
 import Header from "../_components/Header";
 import Link from "next/link";
 import { getUser } from "../_actions/gerUser";
+import { cookies } from "next/headers";
+import LoginForm from "../_components/Forms/LoginForm";
 
 type Role = "OWNER" | "MEMBER";
 
 const page = async () => {
-    // const role = "OWNER";
-    const roles = ["OWNER", "MEMBER"];
-    const role = roles[Math.floor(Math.random() * roles.length)];
-
-    const [] = await Promise.all([]);
+    // const user = getUser();
+    // console.log(getUser);
+    const cookie = cookies();
+    const token = cookie.get("token");
+    console.log(token);
     return (
         <div>
             <Header label="Admin Panel" />
-            <div className="flex flex-col flex-wrap items-center justify-center gap-4 md:flex-row">
+            <LoginForm></LoginForm>
+            {/* {token ? <>Logged in </> : <LoginForm />} */}
+            {/* <div className="flex flex-col flex-wrap items-center justify-center gap-4 md:flex-row">
                 {role === "OWNER"
                     ? links.map((link) => {
                           return (
@@ -36,7 +40,7 @@ const page = async () => {
                                   />
                               );
                           })}
-            </div>
+            </div> */}
         </div>
     );
 };
