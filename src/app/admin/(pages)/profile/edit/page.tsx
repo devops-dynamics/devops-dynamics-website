@@ -1,7 +1,19 @@
+import ProfileForm from "@/app/admin/_components/Forms/ProfileForm";
+import { getUserId } from "@/app/admin/_utils/token";
+import db from "@/db/db";
 import React from "react";
 
-const page = () => {
-    return <div>page</div>;
+const page = async () => {
+    const userId = getUserId();
+    const profile = userId
+        ? await db.profile.findUnique({ where: { user_id: userId } })
+        : null;
+
+    return (
+        <>
+            <ProfileForm profile={profile} />
+        </>
+    );
 };
 
 export default page;
