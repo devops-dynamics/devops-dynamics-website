@@ -8,7 +8,9 @@ const page = async () => {
     const profile = userId
         ? await db.profile.findUnique({ where: { user_id: userId } })
         : null;
-
+    if (!profile) {
+        return <>No Profile Found</>;
+    }
     return (
         <>
             <ProfileForm profile={profile} />

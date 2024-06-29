@@ -12,7 +12,6 @@ type TokenData = {
 export const getToken = (): TokenData | null => {
     const cookie = cookies();
     const token = cookie.get("token")?.value;
-
     if (token) {
         try {
             const tokenData = jwt.verify(

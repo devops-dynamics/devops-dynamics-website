@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
         //  create data
         const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
-            expiresIn: "2h",
+            expiresIn: "24h",
         });
         // save in user's cookie
 

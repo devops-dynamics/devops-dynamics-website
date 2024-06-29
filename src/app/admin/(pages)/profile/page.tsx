@@ -86,7 +86,11 @@ const UserDetails = async ({ profile }: { profile?: Profile | null }) => {
                     </div>
                     <div className="p-6 pt-0" id="buttons">
                         <div className="flex flex-col gap-4">
-                            <Button>Edit Profile</Button>
+                            <Button asChild>
+                                <Link href={`/admin/profile/edit`}>
+                                    Edit Profile
+                                </Link>
+                            </Button>
                             <Button variant="secondary">Add Blog</Button>
                             <Button variant="secondary">Add Project</Button>
                         </div>

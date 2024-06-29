@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { decodeToken } from "./app/admin/_utils/decodeToken";
+import { isTokenExpired } from "./app/admin/_utils/token";
 
 export function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
@@ -8,6 +9,9 @@ export function middleware(req: NextRequest) {
     if (isAdmin && !token) {
         return NextResponse.redirect(new URL("/admin", req.nextUrl));
     }
+    // if (isAdmin && token && isTokenExpired()) {
+    //     return NextResponse.redirect(new URL("/admin", req.nextUrl));
+    // }
 
     if (path === "/admin" && token) {
         return NextResponse.redirect(new URL("/admin/profile", req.nextUrl));
