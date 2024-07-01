@@ -68,3 +68,12 @@ export async function updateTag(
         throw error;
     }
 }
+
+export async function fetchTags() {
+    return await db.tag.findMany({
+        select: {
+            id: true,
+            name: true,
+        },
+    });
+}
