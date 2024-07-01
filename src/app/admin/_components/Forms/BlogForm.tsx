@@ -1,18 +1,28 @@
 "use client";
-import { fetchTags } from "../../_actions/tag";
-import BlogFormComponent from "./BlogFormComponent";
+import React from "react";
+import { useFormState, useFormStatus } from "react-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { Tag } from "@prisma/client";
+import { Blog, Tag } from "@prisma/client";
+import { addBlog } from "../../_actions/blog";
 
-const BlogForm = ({ tags }: { tags?: Tag[] }) => {
+const BlogForm = ({
+    tags,
+    blog,
+    userId,
+}: {
+    tags?: Tag[];
+    blog?: Blog;
+    userId?: string;
+}) => {
+    const [error, action] = useFormState(addBlog.bind(null, userId || ""), {});
     return (
-        <div className="w-full max-w-6xl">
+        <form action={action} className="w-full max-w-6xl">
             <div>
-                <form className="grid gap-6">
+                <div className="grid gap-6">
                     <div className="grid gap-2">
                         <Label htmlFor="title">Title</Label>
                         <Input
@@ -41,7 +51,7 @@ const BlogForm = ({ tags }: { tags?: Tag[] }) => {
                                     <Checkbox
                                         id={tag.name}
                                         value={tag.id}
-                                        name="tags"
+                                        name="blogTags"
                                     />
                                     <Label
                                         htmlFor={tag.name}
@@ -53,13 +63,22 @@ const BlogForm = ({ tags }: { tags?: Tag[] }) => {
                             ))}
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
             <div className="flex justify-end">
-                <Button type="submit">Publish Post</Button>
+                <SubmitButton label={`Publish Changes`} />
             </div>
-        </div>
+        </form>
     );
 };
 
-export default BlogFormComponent;
+export default BlogForm;
+
+function SubmitButton({ label }: { label: string }) {
+    const { pending } = useFormStatus();
+    return (
+        <Button type="submit" disabled={pending}>
+            {label}
+        </Button>
+    );
+}

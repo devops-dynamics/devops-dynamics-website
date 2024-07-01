@@ -10,7 +10,7 @@ const addBlogSchema = z.object({
     title: z.string().min(1),
     description: z.string(),
     blogTags: z.array(z.number()),
-    image: z.string(),
+    // image: z.string(),
 });
 
 export async function addBlog(
@@ -19,9 +19,14 @@ export async function addBlog(
     formData: FormData,
 ) {
     try {
-        const result = addBlogSchema.safeParse(
-            Object.fromEntries(formData.entries()),
-        );
+        const tags = formData.getAll("blogTags").map(Number);
+
+        const formDataObject = {
+            ...Object.fromEntries(formData.entries()),
+            blogTags: tags,
+        };
+
+        const result = addBlogSchema.safeParse(formDataObject);
         if (result.success === false) {
             return result.error.formErrors.fieldErrors;
         }
@@ -38,6 +43,8 @@ export async function addBlog(
                 },
             },
         });
+        revalidatePath("/admin/blog");
+        redirect("/admin/blog");
     } catch (error) {}
 }
 
