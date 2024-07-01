@@ -60,6 +60,42 @@ export async function addBlog(
     }
 }
 
+const updateBlogSchema = addBlogSchema.extend({
+    id: z.string(),
+});
+
+export async function updateBlog(
+    id: string,
+    prevState: unknown,
+    formData: FormData,
+) {
+    try {
+        const result = updateBlogSchema.safeParse({
+            id,
+            ...Object.fromEntries(formData.entries()),
+        });
+        if (result.success === false) {
+            return result.error.formErrors.fieldErrors;
+        }
+        const data = result.data;
+        await db.blog.update({
+            where: { id },
+            data: {
+                title: data.title,
+                description: data.description,
+                tags: {
+                    connect: data.blogTags?.map((id) => ({ id })),
+                },
+            },
+        });
+        revalidatePath("/admin/blog");
+        redirect("/admin/blog");
+    } catch (error) {
+        console.error("Error updating blog:", error);
+        throw error;
+    }
+}
+
 export async function fetchBlogs(userId?: string) {
     const blogs = await db.blog.findMany({ where: { author_id: userId } });
     return blogs;

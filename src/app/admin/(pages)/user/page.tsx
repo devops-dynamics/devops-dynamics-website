@@ -61,15 +61,15 @@ async function UserTable() {
                         <TableCell>{user.role}</TableCell>
 
                         <TableCell>
-                            <Link
+                            {/* <Link
                                 href={`/admin/user/${user.id}/edit`}
-                                className="hover:underline"
+                                className="rounded bg-orange-400 p-1 text-center font-bold text-white hover:bg-orange-300"
                             >
                                 Edit
-                            </Link>
-                            <span className="mx-2 cursor-pointer rounded bg-red-800 p-1 text-center font-bold text-white hover:bg-red-600">
+                            </Link> */}
+                            {/* <span className="mx-2 cursor-pointer rounded bg-red-800 p-1 text-center font-bold text-white hover:bg-red-600">
                                 Delete
-                            </span>
+                            </span> */}
                         </TableCell>
                     </TableRow>
                 ))}

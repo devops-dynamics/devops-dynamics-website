@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Blog, Tag } from "@prisma/client";
-import { addBlog } from "../../_actions/blog";
+import { addBlog, updateBlog } from "../../_actions/blog";
 
 const BlogForm = ({
     tags,
@@ -18,7 +18,12 @@ const BlogForm = ({
     blog?: Blog;
     userId?: string;
 }) => {
-    const [error, action] = useFormState(addBlog.bind(null, userId || ""), {});
+    const [error, action] = useFormState(
+        blog == null
+            ? addBlog.bind(null, userId || "")
+            : updateBlog.bind(null, blog?.id),
+        {},
+    );
     return (
         <form action={action} className="w-full max-w-6xl">
             <div>
@@ -29,6 +34,7 @@ const BlogForm = ({
                             id="title"
                             name="title"
                             placeholder="Enter a catchy title"
+                            defaultValue={blog?.title || ""}
                         />
                         {error?.title && <p>{error.title}</p>}
                     </div>
@@ -39,6 +45,7 @@ const BlogForm = ({
                             name="description"
                             placeholder="Provide a brief description of your blog post"
                             rows={10}
+                            defaultValue={blog?.description || ""}
                         />
                         {error?.description && <p>{error.description}</p>}
                     </div>
