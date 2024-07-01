@@ -1,7 +1,6 @@
 "use server";
 
 import db from "@/db/db";
-import { Tag } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { notFound, redirect } from "next/navigation";
 import { z } from "zod";
