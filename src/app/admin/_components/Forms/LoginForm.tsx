@@ -48,7 +48,7 @@ export default function LoginForm() {
         <div className="flex min-h-screen flex-col items-center justify-center space-y-8 py-2">
             <PageHeader>Admin Panel</PageHeader>
             <div className="space-y-2">
-                <Label htmlFor="email" className="font-blod">
+                <Label htmlFor="email" className="font-bold">
                     Email
                 </Label>
                 <Input

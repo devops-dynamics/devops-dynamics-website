@@ -76,9 +76,9 @@ async function ProjectTable() {
                             >
                                 Edit
                             </Link> */}
-                            <span className="mx-2 cursor-pointer rounded bg-red-800 p-1 text-center font-bold text-white hover:bg-red-600">
+                            {/* <span className="mx-2 cursor-pointer rounded bg-red-800 p-1 text-center font-bold text-white hover:bg-red-600">
                                 Delete
-                            </span>
+                            </span> */}
                         </TableCell>
                     </TableRow>
                 ))}

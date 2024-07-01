@@ -18,12 +18,13 @@ const page = () => {
         <div>
             <PageHeader>
                 <span>Blogs</span>
+                <Link href={`/admin/user/new`}>
+                    <Button asChild>
+                        <Link href={`/admin/blog/new`}>Add New Blog</Link>
+                    </Button>
+                </Link>
             </PageHeader>
-            <Link href={`/admin/user/new`}>
-                <Button asChild>
-                    <Link href={`/admin/blog/new`}>Add New Blog</Link>
-                </Button>
-            </Link>
+
             <BlogTable />
         </div>
     );
