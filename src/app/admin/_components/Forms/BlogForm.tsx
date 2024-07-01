@@ -30,6 +30,7 @@ const BlogForm = ({
                             name="title"
                             placeholder="Enter a catchy title"
                         />
+                        {error?.title && <p>{error.title}</p>}
                     </div>
                     <div className="grid gap-2">
                         <Label htmlFor="description">Blog Content</Label>
@@ -39,6 +40,7 @@ const BlogForm = ({
                             placeholder="Provide a brief description of your blog post"
                             rows={10}
                         />
+                        {error?.description && <p>{error.description}</p>}
                     </div>
                     <div>
                         <Label>Tags</Label>
@@ -61,6 +63,7 @@ const BlogForm = ({
                                     </Label>
                                 </div>
                             ))}
+                            {error?.blogTags && <p>{error.blogTags}</p>}
                         </div>
                     </div>
                 </div>

@@ -9,7 +9,7 @@ import { z } from "zod";
 const addBlogSchema = z.object({
     title: z.string().min(1),
     description: z.string(),
-    blogTags: z.array(z.number()),
+    blogTags: z.array(z.number()).optional(),
     // image: z.string(),
 });
 
@@ -19,6 +19,15 @@ export async function addBlog(
     formData: FormData,
 ) {
     try {
+        const user = await db.user.findUnique({
+            where: { id: userId },
+            select: { profile: { select: { id: true } } },
+        });
+
+        if (!user || !user.profile?.id) {
+            return notFound();
+        }
+
         const tags = formData.getAll("blogTags").map(Number);
 
         const formDataObject = {
@@ -36,16 +45,19 @@ export async function addBlog(
             data: {
                 title: data.title,
                 description: data.description,
-                author_id: userId,
+                author_id: user.profile.id,
                 image: "",
                 tags: {
-                    connect: data.blogTags.map((id) => ({ id })),
+                    connect: data.blogTags?.map((id) => ({ id })),
                 },
             },
         });
         revalidatePath("/admin/blog");
         redirect("/admin/blog");
-    } catch (error) {}
+    } catch (error) {
+        console.error("Error deleting user:", error);
+        throw error;
+    }
 }
 
 export async function fetchBlogs(userId?: string) {
