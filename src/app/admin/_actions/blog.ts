@@ -40,3 +40,8 @@ export async function addBlog(
         });
     } catch (error) {}
 }
+
+export async function fetchBlogs(userId?: string) {
+    const blogs = await db.blog.findMany({ where: { author_id: userId } });
+    return blogs;
+}
