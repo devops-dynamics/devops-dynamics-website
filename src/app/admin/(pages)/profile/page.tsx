@@ -75,13 +75,7 @@ const UserDetails = async ({ profile }: { profile?: Profile | null }) => {
                             </div>
                         </div>
                         <div className="text-muted-foreground">
-                            {/* {profile?.bio} */}
-                            John is a passionate web developer with a keen eye
-                            for design. He loves building innovative and
-                            user-friendly applications that solve real-world
-                            problems. In his free time, he enjoys exploring new
-                            technologies and contributing to open-source
-                            projects.
+                            {profile?.bio}
                         </div>
                     </div>
                     <div className="p-6 pt-0" id="buttons">
