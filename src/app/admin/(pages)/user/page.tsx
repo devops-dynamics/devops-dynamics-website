@@ -39,7 +39,7 @@ async function UserTable() {
         orderBy: { name: "asc" },
     });
 
-    console.log(users);
+    // console.log(users);
 
     if (users.length === 0) return <p>No users found</p>;
 

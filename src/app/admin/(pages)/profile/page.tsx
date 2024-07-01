@@ -91,8 +91,15 @@ const UserDetails = async ({ profile }: { profile?: Profile | null }) => {
                                     Edit Profile
                                 </Link>
                             </Button>
-                            <Button variant="secondary">Add Blog</Button>
-                            <Button variant="secondary">Add Project</Button>
+                            <Button asChild variant="secondary">
+                                <Link href={`/admin/blog/new`}>Add Blog</Link>
+                            </Button>
+
+                            <Button asChild variant="secondary">
+                                <Link href={`/admin/project/new`}>
+                                    Add Project
+                                </Link>
+                            </Button>
                         </div>
                     </div>
                 </div>
