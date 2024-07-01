@@ -22,7 +22,7 @@ export default function LoginForm() {
         try {
             setLoading(true);
             const response = await axios.post(
-                "http://localhost:3000/api/user/login",
+                `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/login`,
                 user,
             );
             console.log("Login success", response.data);
