@@ -44,7 +44,7 @@ const BlogForm = ({
                             id="description"
                             name="description"
                             placeholder="Provide a brief description of your blog post"
-                            rows={10}
+                            rows={40}
                             defaultValue={blog?.description || ""}
                         />
                         {error?.description && <p>{error.description}</p>}
