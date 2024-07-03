@@ -48,4 +48,37 @@ export async function addProject(
     }
 }
 
-export async function editProject() {}
+const updateProjectSchema = addProjectSchema.extend({
+    id: z.string(),
+});
+
+export async function updateProject(
+    id: string,
+    prevState: unknown,
+    formData: FormData,
+) {
+    try {
+        const result = updateProjectSchema.safeParse({
+            id,
+            ...Object.fromEntries(formData.entries()),
+        });
+
+        if (result.success === false) {
+            return result.error.formErrors.fieldErrors;
+        }
+        const data = result.data;
+
+        await db.project.update({
+            where: { id },
+            data: {
+                title: data.title,
+                description: data.description,
+            },
+        });
+        revalidatePath("/admin/project");
+        redirect("/admin/project");
+    } catch (error) {
+        console.error("Error updating project:", error);
+        throw error;
+    }
+}

@@ -60,16 +60,85 @@ export const addUser = async (prevState: unknown, formData: FormData) => {
     }
 };
 
-export const deleteUser = async (
+const updateUserSchema = addUserSchema.extend({
+    id: z.string(),
+});
+
+export const updateUser = async (
     id: string,
     prevState: unknown,
     formData: FormData,
 ) => {
     try {
-        const user = await db.user.findUnique({ where: { id } });
-        if (!user) return notFound();
+        const result = updateUserSchema.safeParse({
+            id,
+            ...Object.fromEntries(formData.entries()),
+        });
+        if (!result.success) {
+            return result.error.formErrors.fieldErrors;
+        }
+
+        const data = result.data;
+
+        const salt = await bcryptjs.genSalt(10);
+        const hashedPassword = await bcryptjs.hash(data.password, salt);
+
+        const user = await db.user.findUnique({
+            where: { id },
+            select: {
+                profile: {
+                    select: {
+                        id: true,
+                    },
+                },
+            },
+        });
+
+        if (!user || !user.profile?.id) return notFound();
+
+        await db.user.update({
+            where: { id },
+            data: {
+                name: data.name,
+                email: data.email,
+                password: hashedPassword,
+                role: data.role,
+            },
+        });
+
+        await db.profile.update({
+            where: { id: user.profile.id },
+            data: {
+                email: data.email,
+                display_name: data.name,
+            },
+        });
+
+        revalidatePath("/admin/user");
+        redirect("/admin/user");
+    } catch (error) {
+        console.error("Error updating user:", error);
+        throw error;
+    }
+};
+
+export const deleteUser = async (id: string) => {
+    try {
+        const user = await db.user.findUnique({
+            where: { id },
+            select: {
+                profile: {
+                    select: {
+                        id: true,
+                    },
+                },
+            },
+        });
+
+        if (!user || !user.profile?.id) return notFound();
 
         await db.user.delete({ where: { id } });
+        await db.profile.delete({ where: { id: user.profile.id } });
 
         revalidatePath("/admin/user");
         redirect("/admin/user");

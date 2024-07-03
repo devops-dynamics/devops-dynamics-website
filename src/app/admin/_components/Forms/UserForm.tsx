@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { addUser, deleteUser } from "../../_actions/user";
+import { addUser, updateUser } from "../../_actions/user";
 import { User } from "@prisma/client";
 import { useFormState, useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
@@ -16,7 +16,7 @@ import {
 
 export const UserForm = ({ user }: { user?: User | null }) => {
     const [error, action] = useFormState(
-        user == null ? addUser : deleteUser.bind(null, user.id),
+        user == null ? addUser : updateUser.bind(null, user.id),
         {},
     );
 
@@ -67,7 +67,10 @@ export const UserForm = ({ user }: { user?: User | null }) => {
                 <Label className="space-y-2">Role</Label>
                 <Select name="role" required>
                     <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Select Role" />
+                        <SelectValue
+                            placeholder="Select Role"
+                            defaultValue={user?.role}
+                        />
                     </SelectTrigger>
                     <SelectContent>
                         <SelectItem value="OWNER">Owner</SelectItem>

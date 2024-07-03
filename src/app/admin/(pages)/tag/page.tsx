@@ -53,12 +53,11 @@ async function ProductsTable() {
                     <TableRow key={tag.id}>
                         <TableCell>{tag.name}</TableCell>
                         <TableCell>
-                            <Link
-                                href={`/admin/tag/${tag.id}/edit`}
-                                className="hover:underline"
-                            >
-                                Edit
-                            </Link>
+                            <Button asChild variant={"secondary"}>
+                                <Link href={`/admin/tag/${tag.id}/edit`}>
+                                    Edit
+                                </Link>
+                            </Button>
                         </TableCell>
                     </TableRow>
                 ))}

@@ -11,6 +11,7 @@ import {
 import Link from "next/link";
 import { PageHeader } from "../../_components/Header/PageHeader";
 import { Button } from "@/components/ui/button";
+import { deleteUser } from "../../_actions/user";
 
 const page = () => {
     return (
@@ -60,7 +61,7 @@ async function UserTable() {
                         <TableCell>{user.email}</TableCell>
                         <TableCell>{user.role}</TableCell>
 
-                        <TableCell>
+                        <TableCell className="space-x-2">
                             {/* <Link
                                 href={`/admin/user/${user.id}/edit`}
                                 className="rounded bg-orange-400 p-1 text-center font-bold text-white hover:bg-orange-300"
@@ -70,6 +71,16 @@ async function UserTable() {
                             {/* <span className="mx-2 cursor-pointer rounded bg-red-800 p-1 text-center font-bold text-white hover:bg-red-600">
                                 Delete
                             </span> */}
+                            <Button asChild>
+                                <Link href={`/admin/user/${user.id}/edit`}>
+                                    Edit
+                                </Link>
+                            </Button>
+                            <Button asChild variant={"destructive"}>
+                                <Link href={`/admin/user/${user.id}/delete`}>
+                                    Delete
+                                </Link>
+                            </Button>
                         </TableCell>
                     </TableRow>
                 ))}
