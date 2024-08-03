@@ -99,3 +99,21 @@ export async function fetchBlogs(userId?: string) {
     const blogs = await db.blog.findMany({ where: { author_id: userId } });
     return blogs;
 }
+
+
+// export const deleteBlog = async (id: string) => {
+
+export async function deleteBlog(id: string) {
+    try {
+        const blog = await db.blog.findUnique({ where: { id } });
+        if (!blog) return notFound();
+
+        await db.blog.delete({ where: { id } });
+
+        revalidatePath("/admin/blog");
+        redirect("/admin/blog");
+    } catch (error) {
+        console.error("Error deleting blog:", error);
+        throw error;
+    }
+}
