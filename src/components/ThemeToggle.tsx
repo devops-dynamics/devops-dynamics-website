@@ -14,6 +14,14 @@ import {
 
 export default function ThemeToggle() {
     const { setTheme } = useTheme();
+    // const [myTheme, setMyTheme] = React.useState("dark");
+    // function togglerTheme(){
+    //     if(myTheme === "dark"){
+    //         setTheme("light");
+    //         setMyTheme("light");
+    // }else{
+
+    // }
 
     return (
         <DropdownMenu>

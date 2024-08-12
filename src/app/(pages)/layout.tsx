@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { ThemeProvider } from "@/components/Providers/ThemeProvider";
-import { Inter as FontSans } from "next/font/google";
-import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer/Footer";
-const fontSans = FontSans({
-    subsets: ["latin"],
-    variable: "--font-sans",
-});
 
 export const metadata: Metadata = {
     title: "DevOps Dynamics",
@@ -22,26 +15,12 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body
-                className={cn(
-                    "min-h-screen bg-background font-sans antialiased",
-                    fontSans.variable,
-                )}
-            >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                    disableTransitionOnChange
-                >
-                    <Header />
-                    <main className="py- mx-auto min-h-screen w-full max-w-7xl px-6 py-16">
-                        {children}
-                    </main>
-                    <Footer />
-                </ThemeProvider>
-            </body>
-        </html>
+        <>
+            <Header />
+            <main className="py- mx-auto min-h-screen w-full max-w-7xl px-6 py-16">
+                {children}
+            </main>
+            <Footer />
+        </>
     );
 }
