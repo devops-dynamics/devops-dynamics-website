@@ -1,5 +1,6 @@
 import { Blog } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function BlogCard({ blog }: { blog: Blog }) {
@@ -27,7 +28,7 @@ function BlogCard({ blog }: { blog: Blog }) {
                 />
             </div>
 
-            <div className="space-y-4 bg-slate-900 px-4 py-8 sm:p-6">
+            <div className="space-y-4 bg-background px-4 py-8 text-foreground dark:bg-slate-900 sm:p-6">
                 <time
                     dateTime="2022-10-10"
                     className="block text-xs text-gray-200"
@@ -36,12 +37,12 @@ function BlogCard({ blog }: { blog: Blog }) {
                     10th Oct 2022{" "}
                 </time>
 
-                <a href="#">
+                <Link href={"/blogs/123"}>
                     <h3 className="mt-4 text-lg font-semibold text-white hover:underline">
                         {/* How to position your furniture for positivity */}
                         Lorem ipsum dolor sit amet consectetur.
                     </h3>
-                </a>
+                </Link>
 
                 <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-200">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.

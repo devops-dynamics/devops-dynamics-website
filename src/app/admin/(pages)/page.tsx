@@ -10,7 +10,7 @@ type Role = "OWNER" | "MEMBER";
 const page = async () => {
     const cookie = cookies();
     const token = cookie.get("token");
-    console.log(token);
+    // console.log(token);
     return (
         <>
             <LoginForm></LoginForm>

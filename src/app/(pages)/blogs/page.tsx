@@ -7,7 +7,7 @@ import React from "react";
 const BlogPage = async () => {
     return (
         <>
-            <p className="font-xs my-6 text-center font-bold text-purple-600">
+            <p className="font-xs my-6 text-center font-semibold text-purple-400">
                 Explore new everyday
             </p>
             <h1 className="mb-8 text-center text-5xl font-bold">Our Blogs</h1>
@@ -35,7 +35,7 @@ const BlogGrid = async () => {
             author_id: true,
         },
     });
-    console.log(allBlogs);
+    // console.log(allBlogs);
     return (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {allBlogs.map((blog) => (

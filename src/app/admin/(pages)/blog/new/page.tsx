@@ -5,7 +5,7 @@ import React from "react";
 
 const page = async () => {
     const userId = getUserId();
-    // console.log(userId);
+    // // console.log(userId);
     const tags = await fetchTags();
     return (
         <div>
