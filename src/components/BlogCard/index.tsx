@@ -6,7 +6,7 @@ import React from "react";
 function BlogCard({ blog }: { blog: Blog }) {
     const { id, image, title, author_id, description } = blog;
     return (
-        <article className="overflow-hidden rounded-lg shadow transition hover:shadow-lg hover:outline hover:outline-white">
+        <article className="relative overflow-hidden rounded-lg shadow transition hover:shadow-lg hover:outline hover:outline-white">
             {/* <div className="left-0 top-16 z-10 overflow-hidden rounded-lg border border-white shadow transition hover:shadow-lg"> */}
 
             {/* </div> */}
@@ -18,33 +18,32 @@ function BlogCard({ blog }: { blog: Blog }) {
                     fill={true}
                 />
             </div>
-            <div className="border-3 relative z-10 rounded-full">
+            <div className="border-3 absolute right-4 top-40 z-10 h-[80px] w-[80px] rounded-full">
                 <Image
-                    src={"/placeholder-user.jpg"}
+                    src={"/user.jpeg"}
                     alt=""
-                    height={70}
-                    width={70}
-                    className="absolute -top-8 right-8 z-10 rounded-full object-cover"
+                    fill={true}
+                    className="rounded-full object-cover"
                 />
             </div>
 
-            <div className="space-y-4 bg-background px-4 py-8 text-foreground dark:bg-slate-900 sm:p-6">
+            <div className="space-y-4 bg-background bg-slate-50 px-4 py-8 text-foreground dark:bg-slate-900 sm:p-6">
                 <time
                     dateTime="2022-10-10"
-                    className="block text-xs text-gray-200"
+                    className="block text-xs text-slate-700 dark:text-gray-200"
                 >
                     {" "}
                     10th Oct 2022{" "}
                 </time>
 
                 <Link href={"/blogs/123"}>
-                    <h3 className="mt-4 text-lg font-semibold text-white hover:underline">
+                    <h3 className="mt-4 text-lg font-semibold text-slate-800 hover:underline dark:text-white">
                         {/* How to position your furniture for positivity */}
                         Lorem ipsum dolor sit amet consectetur.
                     </h3>
                 </Link>
 
-                <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-200">
+                <p className="mt-2 line-clamp-3 text-sm/relaxed text-slate-700 dark:text-gray-200">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Recusandae dolores, possimus pariatur animi temporibus
                     nesciunt praesentium dolore sed nulla ipsum eveniet corporis
