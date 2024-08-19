@@ -143,7 +143,7 @@ const EnquiryFormInput = ({
     name: string;
 }) => {
     return (
-        <div className="p-2">
+        <div className="px-0 py-1">
             <label
                 htmlFor={name}
                 className="relative block overflow-hidden border-b-2 border-muted-foreground bg-transparent pt-3 focus-within:border-blue-600 dark:border-muted"
@@ -152,10 +152,10 @@ const EnquiryFormInput = ({
                     type={type}
                     id={name}
                     placeholder={placeholder}
-                    className="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+                    className="peer h-8 w-full border-none bg-transparent p-2 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                 />
 
-                <span className="absolute start-0 top-2 -translate-y-1/2 text-xs font-semibold text-muted-foreground transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
+                <span className="absolute start-0 top-2 -translate-y-1/2 pl-2 text-xs font-semibold text-muted-foreground transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
                     {placeholder}
                 </span>
             </label>
