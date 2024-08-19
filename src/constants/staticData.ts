@@ -167,4 +167,66 @@ const about = {
     },
 };
 
-export { footer, about };
+const services = {
+    header: {
+        title: "Our Services",
+        description:
+            "Our enthusiasm is rooted in advancing our knowledge and mastery in the artistic domain",
+    },
+
+    servicesDetails: [
+        {
+            id: 1,
+            title: "Brand Identity",
+            description:
+                "We help you create a brand identity that resonates with your target audience.",
+        },
+        {
+            id: 2,
+            title: "Web Development",
+            description:
+                "Our team of expert web developers will bring your vision to life.",
+        },
+        {
+            id: 3,
+            title: "SEO Optimization",
+            description:
+                "We will help you optimize your website to improve your search engine rankings.",
+        },
+        {
+            id: 4,
+            title: "Social Media Marketing",
+            description:
+                "We will help you create a social media marketing strategy that drives results.",
+        },
+    ],
+    faq: [
+        {
+            id: 1,
+            question: "What is your refund policy?",
+            answer: "We offer a 30-day money-back guarantee on all of our services.",
+        },
+        {
+            id: 2,
+            question: "How long does it take to complete a project?",
+            answer: "The time it takes to complete a project depends on the scope and complexity of the project.",
+        },
+        {
+            id: 3,
+            question: "Do you offer custom packages?",
+            answer: "Yes, we offer custom packages tailored to meet the specific needs of our clients.",
+        },
+        {
+            id: 4,
+            question: "What payment methods do you accept?",
+            answer: "We accept all major credit cards, PayPal, and bank transfers.",
+        },
+        {
+            id: 5,
+            question: "Do you offer ongoing support?",
+            answer: "Yes, we offer ongoing support to all of our clients to ensure that their websites are running smoothly.",
+        },
+    ],
+};
+
+export { footer, about, services };

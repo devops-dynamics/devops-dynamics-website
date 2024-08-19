@@ -84,14 +84,14 @@ const AboutPage = () => {
             </div>
             <Separator orientation="horizontal" className="my-14" />
             {/* LeaderShip & Team */}
-            <div className="flex justify-between">
+            <div className="flex flex-col justify-between gap-4 lg:flex-row">
                 <div className="text-xl font-bold">Leadership</div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                     {leadership.map((leader, index) => {
                         return (
                             <div
                                 key={index}
-                                className={`h-80 w-64 overflow-hidden rounded-lg bg-black/50 bg-[url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")] bg-cover bg-center bg-no-repeat p-4 bg-blend-overlay hover:cursor-pointer hover:bg-black/40`}
+                                className={`h-64 w-52 overflow-hidden rounded-lg bg-black/50 bg-[url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")] bg-cover bg-center bg-no-repeat p-4 bg-blend-overlay hover:cursor-pointer hover:bg-black/40 lg:h-80 lg:w-64`}
                             >
                                 <div className="text-white">
                                     <h2 className="font-semibold">
@@ -108,15 +108,15 @@ const AboutPage = () => {
             </div>
             <Separator orientation="horizontal" className="my-14" />
 
-            <div className="flex justify-between">
+            <div className="flex flex-col justify-between gap-4 lg:flex-row">
                 <div className="text-xl font-bold">Team</div>
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 gap-6 md:grid-cols-3">
                     {team.length > 0 &&
                         team.map((member, index) => {
                             return (
                                 <div
                                     key={index}
-                                    className={`h-80 w-64 overflow-hidden rounded-lg bg-black/50 bg-[url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")] bg-cover bg-center bg-no-repeat p-4 bg-blend-overlay hover:cursor-pointer hover:bg-black/40`}
+                                    className={`h-64 w-52 overflow-hidden rounded-lg bg-black/50 bg-[url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")] bg-cover bg-center bg-no-repeat p-4 bg-blend-overlay hover:cursor-pointer hover:bg-black/40 lg:h-80 lg:w-64`}
                                 >
                                     <div className="text-white">
                                         <h2 className="font-semibold">
