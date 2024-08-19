@@ -1,10 +1,13 @@
 import { Separator } from "@/components/ui/separator";
 import VerticalSeparator from "@/components/VerticalSeparator";
+import { about } from "@/constants/staticData";
 import Image from "next/image";
 import React from "react";
 
 // Static Page
 const AboutPage = () => {
+    const { header, impact, introduction, leadership, values, team } = about;
+
     const ourCulture = [
         {
             heading: "Loyalty",
@@ -22,88 +25,21 @@ const AboutPage = () => {
                 "We have a diverse team, which is why we have a different team for every project.",
         },
     ];
-    // leadership: array ob objects with name, position, link
-    const leadership = [
-        {
-            name: "John Doe",
-            position: "CEO",
-            link: "https://www.linkedin.com/in/johndoe",
-            image: "/user.jpeg",
-        },
-        {
-            name: "Jane Doe",
-            position: "CTO",
-            link: "https://www.linkedin.com/in/janedoe",
-            image: "/user.jpeg",
-        },
-        {
-            name: "John Smith",
-            position: "COO",
-            link: "https://www.linkedin.com/in/johnsmith",
-            image: "/user.jpeg",
-        },
-    ];
-    // similart team array
-    const team = [
-        {
-            name: "John Doe",
-            position: "CEO",
-            link: "https://www.linkedin.com/in/johndoe",
-            image: "/user.jpeg",
-        },
-        {
-            name: "Jane Doe",
-            position: "CTO",
-            link: "https://www.linkedin.com/in/janedoe",
-            image: "/user.jpeg",
-        },
-        {
-            name: "John Smith",
-            position: "COO",
-            link: "https://www.linkedin.com/in/johnsmith",
-            image: "/user.jpeg",
-        },
-        {
-            name: "Jane Doe",
-            position: "CTO",
-            link: "https://www.linkedin.com/in/janedoe",
-            image: "/user.jpeg",
-        },
-        {
-            name: "John Smith",
-            position: "COO",
-            link: "https://www.linkedin.com/in/johnsmith",
-            image: "/user.jpeg",
-        },
-    ];
+
     return (
         <div className="space-y-24">
             {/*  */}
             <div className="my-16 space-y-8">
                 <h1 className="text-base font-bold">About Us</h1>
-                <h2 className="text-5xl font-semibold">
-                    Our Strength is Collaboration
-                </h2>
+                <h2 className="text-5xl font-semibold">{about.header.title}</h2>
                 <h3 className="max-w-3xl text-lg font-medium text-muted-foreground">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quas eaque sequi, animi veniam numquam consectetur?
+                    {about.header.description}
                 </h3>
-                <article className="prose dark:prose-invert">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Quisquam voluptatibus, quod, quae, voluptate,
-                        doloremque quidem nemo exercitationem voluptates
-                        doloribus quos dolorem. Temporibus voluptatem, quidem,
-                        dolores, quas quae voluptate nemo et exercitationem.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </p>
-                    <p>
-                        Veritatis ipsa autem nesciunt ea debitis quis nam
-                        aperiam. Totam possimus sunt nobis, sint ex mollitia
-                        rerum architecto quod rem earum distinctio.
-                    </p>
+                {/* <article className="prose dark:prose-invert">
+                    <p>{about.introduction.description}</p>
+
                     <br />
-                </article>
+                </article> */}
                 <div className="flex max-w-5xl flex-wrap justify-between gap-8">
                     <BlockQuote heading="32" subheading="Underpaid Employees" />
                     <BlockQuote heading="$25M" subheading="Invoices billed" />
@@ -175,23 +111,24 @@ const AboutPage = () => {
             <div className="flex justify-between">
                 <div className="text-xl font-bold">Team</div>
                 <div className="grid grid-cols-3 gap-6">
-                    {team.map((member, index) => {
-                        return (
-                            <div
-                                key={index}
-                                className={`h-80 w-64 overflow-hidden rounded-lg bg-black/50 bg-[url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")] bg-cover bg-center bg-no-repeat p-4 bg-blend-overlay hover:cursor-pointer hover:bg-black/40`}
-                            >
-                                <div className="text-white">
-                                    <h2 className="font-semibold">
-                                        {member.name}
-                                    </h2>
-                                    <h2 className="text-sm font-medium">
-                                        {member.position}
-                                    </h2>
+                    {team.length > 0 &&
+                        team.map((member, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    className={`h-80 w-64 overflow-hidden rounded-lg bg-black/50 bg-[url("https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")] bg-cover bg-center bg-no-repeat p-4 bg-blend-overlay hover:cursor-pointer hover:bg-black/40`}
+                                >
+                                    <div className="text-white">
+                                        <h2 className="font-semibold">
+                                            {member?.name}
+                                        </h2>
+                                        <h2 className="text-sm font-medium">
+                                            {member?.position}
+                                        </h2>
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
                 </div>
             </div>
         </div>
