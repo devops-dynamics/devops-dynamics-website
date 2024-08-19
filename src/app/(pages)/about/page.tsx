@@ -131,7 +131,7 @@ const AboutPage = () => {
     );
 };
 
-export const BlockQuote = ({
+const BlockQuote = ({
     heading,
     subheading,
     date,
