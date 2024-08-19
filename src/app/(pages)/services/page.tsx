@@ -1,3 +1,4 @@
+import PageHeader from "@/components/PageHeader";
 import {
     Accordion,
     AccordionContent,
@@ -12,6 +13,7 @@ const page = () => {
     return (
         <div className="flex flex-col gap-y-16">
             {/* Header */}
+
             <div className="max-w-lg space-y-12">
                 <h1 className="text-md font-bold">{header.title}</h1>
                 <h2 className="text-5xl">{header.description}</h2>

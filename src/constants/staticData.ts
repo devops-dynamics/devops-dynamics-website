@@ -1,4 +1,5 @@
 import { title } from "process";
+import { date } from "zod";
 
 const footer = {
     services: [
@@ -74,6 +75,7 @@ const footer = {
     ],
 };
 
+// for about page
 const about = {
     header: {
         title: "Our strength is collaboration",
@@ -167,6 +169,7 @@ const about = {
     },
 };
 
+// for services page
 const services = {
     header: {
         title: "Our Services",
@@ -229,4 +232,62 @@ const services = {
     ],
 };
 
-export { footer, about, services };
+// contact information
+const contact = {
+    email: "",
+    phone: "",
+    address: "",
+    social: {
+        twitter: "",
+        facebook: "",
+        linkedin: "",
+        instagram: "",
+    },
+};
+
+// for work page
+const works = {
+    header: {
+        title: "Our Works",
+        subTitle: "Proven solutions for real-world problems",
+        description:
+            "We believe in efficiency and maximizing our resources to provide the best value to our clients. The primary way we do that is by re-using the same five projects we’ve been developing for the past decade.",
+    },
+    workDetails: [
+        {
+            id: 1,
+            title: "Brand Identity",
+            description:
+                "We help you create a brand identity that resonates with your target audience.",
+            image: "/brand-identity.jpg",
+            company: "Company A",
+            service: "Web Development",
+            date: "January 2023",
+            link: "#",
+            testimonial: {
+                name: "John Doe",
+                position: "CEO, Company A",
+                testimonial:
+                    "DevOps Dynamics has been a valuable partner in helping us create a brand identity that resonates with our target audience. Their team of experts has been instrumental in helping us achieve our goals and drive results.",
+            },
+        },
+        {
+            id: 2,
+            title: "Web Development",
+            description:
+                "Our team of expert web developers will bring your vision to life.",
+            image: "/web-development.jpg",
+            company: "Company B",
+            service: "Web Development, CMS",
+            date: "February 2023",
+            testimonial: {
+                name: "Jane Doe",
+                position: "CEO, Company B",
+                testimonial:
+                    "DevOps Dynamics has been a valuable partner in helping us create a brand identity that resonates with our target audience. Their team of experts has been instrumental in helping us achieve our goals and drive results.",
+            },
+        },
+    ],
+};
+
+export { footer, about, services, works };

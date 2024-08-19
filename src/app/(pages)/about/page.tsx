@@ -1,3 +1,4 @@
+import PageHeader from "@/components/PageHeader";
 import { Separator } from "@/components/ui/separator";
 import VerticalSeparator from "@/components/VerticalSeparator";
 import { about } from "@/constants/staticData";
@@ -29,23 +30,18 @@ const AboutPage = () => {
     return (
         <div className="space-y-24">
             {/*  */}
-            <div className="my-16 space-y-8">
-                <h1 className="text-base font-bold">About Us</h1>
-                <h2 className="text-5xl font-semibold">{about.header.title}</h2>
-                <h3 className="max-w-3xl text-lg font-medium text-muted-foreground">
-                    {about.header.description}
-                </h3>
-                {/* <article className="prose dark:prose-invert">
-                    <p>{about.introduction.description}</p>
 
-                    <br />
-                </article> */}
+            <PageHeader
+                pageHeaderTitle="About Us"
+                pageHeaderSubtitle={about.header.title}
+                pageHeaderDescription={about.header.description}
+            >
                 <div className="flex max-w-5xl flex-wrap justify-between gap-8">
                     <BlockQuote heading="32" subheading="Underpaid Employees" />
                     <BlockQuote heading="$25M" subheading="Invoices billed" />
                     <BlockQuote heading="52" subheading="Placated clients" />
                 </div>
-            </div>
+            </PageHeader>
             <div className="my-16 min-h-96 w-full space-y-4 rounded-xl bg-foreground p-10 text-background outline outline-8 outline-foreground">
                 <h4 className="font-bold">Our culture</h4>
                 <h1 className="text-3xl font-semibold">
@@ -135,7 +131,7 @@ const AboutPage = () => {
     );
 };
 
-const BlockQuote = ({
+export const BlockQuote = ({
     heading,
     subheading,
     date,
