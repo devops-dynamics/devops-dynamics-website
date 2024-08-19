@@ -146,7 +146,7 @@ const EnquiryFormInput = ({
         <div className="px-0 py-1">
             <label
                 htmlFor={name}
-                className="relative block overflow-hidden border-b-2 border-muted-foreground bg-transparent pt-3 focus-within:border-blue-600 dark:border-muted"
+                className="relative block overflow-hidden border-b-2 border-muted-foreground bg-transparent pt-3 dark:border-muted"
             >
                 <input
                     type={type}
