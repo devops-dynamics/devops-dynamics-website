@@ -1,4 +1,3 @@
-import { BlockQuote } from "@/app/(pages)/about/page";
 import React from "react";
 
 function PageHeader({

@@ -1,8 +1,6 @@
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import VerticalSeparator from "@/components/VerticalSeparator";
-import { Facebook } from "@/constants/icons";
 import { works } from "@/constants/staticData";
 import React from "react";
 

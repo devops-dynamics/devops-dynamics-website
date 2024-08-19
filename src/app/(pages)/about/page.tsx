@@ -2,7 +2,6 @@ import PageHeader from "@/components/PageHeader";
 import { Separator } from "@/components/ui/separator";
 import VerticalSeparator from "@/components/VerticalSeparator";
 import { about } from "@/constants/staticData";
-import Image from "next/image";
 import React from "react";
 
 // Static Page
