@@ -96,6 +96,6 @@ export default function Home() {
 
 const WorkCard = () => {
     return (
-        <div className="h-96 w-full max-w-sm rounded-lg bg-purple-50 dark:bg-purple-50/20"></div>
+        <div className="h-96 w-full max-w-sm rounded-lg bg-purple-100 dark:bg-purple-50/20"></div>
     );
 };
