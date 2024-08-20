@@ -2,7 +2,7 @@ import { Facebook, GitHub, Instagram, Twitter } from "@/constants/icons";
 import { footer } from "@/constants/staticData";
 // import { Separator } from "@radix-ui/react-dropdown-menu";
 import React from "react";
-import { Separator } from "../ui/separator";
+import { Separator } from "./ui/separator";
 
 const FooterLink = ({ title, link }: { title: string; link: string }) => {
     return (

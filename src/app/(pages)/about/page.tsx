@@ -1,8 +1,7 @@
-import PageHeader from "@/components/PageHeader";
-import { Separator } from "@/components/ui/separator";
-import VerticalSeparator from "@/components/VerticalSeparator";
-import { about } from "@/constants/staticData";
 import React from "react";
+import { PageHeader, VerticalSeparator } from "@/components";
+import { Separator } from "@/components/ui/separator";
+import { about } from "@/constants/staticData";
 
 // Static Page
 const AboutPage = () => {

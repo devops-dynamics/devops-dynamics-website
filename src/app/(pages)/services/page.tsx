@@ -1,4 +1,4 @@
-import PageHeader from "@/components/PageHeader";
+import React from "react";
 import {
     Accordion,
     AccordionContent,
@@ -6,7 +6,6 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 import { services } from "@/constants/staticData";
-import React from "react";
 
 const page = () => {
     const { header, faq, servicesDetails } = services;

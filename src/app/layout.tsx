@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/Providers/ThemeProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 const fontSans = FontSans({

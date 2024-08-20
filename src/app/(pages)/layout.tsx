@@ -1,7 +1,6 @@
-import type { Metadata } from "next";
 import "../globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer/Footer";
+import type { Metadata } from "next";
+import { Footer, Header } from "@/components";
 
 export const metadata: Metadata = {
     title: "DevOps Dynamics",

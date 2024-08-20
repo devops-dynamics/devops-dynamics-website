@@ -1,7 +1,7 @@
-import PageHeader from "@/components/PageHeader";
-import { Separator } from "@/components/ui/separator";
+// import PageHeader from "@/components/PageHeader";
+import { PageHeader } from "@/components";
+import { Separator } from "@/components/ui";
 import { homePage } from "@/constants/staticData";
-import Image from "next/image";
 
 export default function Home() {
     const { header, services, workedWith, testimonial, works } = homePage;

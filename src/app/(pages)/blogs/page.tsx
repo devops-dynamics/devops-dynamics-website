@@ -1,8 +1,7 @@
-import BlogCard from "@/components/BlogCard";
-import db from "@/db/db";
-import { Blog, Tag } from "@prisma/client";
-import Link from "next/link";
 import React from "react";
+import db from "@/db/db";
+import { BlogCard, Link } from "@/components";
+import { Blog, Tag } from "@prisma/client";
 
 const BlogPage = async () => {
     return (

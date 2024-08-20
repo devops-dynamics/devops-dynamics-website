@@ -1,8 +1,7 @@
-import PageHeader from "@/components/PageHeader";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { works } from "@/constants/staticData";
 import React from "react";
+import { PageHeader } from "@/components";
+import { Button, Separator } from "@/components/ui";
+import { works } from "@/constants/staticData";
 
 const page = () => {
     const { header, workDetails } = works;

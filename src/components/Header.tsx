@@ -2,8 +2,8 @@ import Link from "next/link";
 import React from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Package2 } from "lucide-react";
-import { Button } from "../ui/button";
-import ThemeToggle from "../ThemeToggle";
+import { Button } from "./ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const links = [
     {

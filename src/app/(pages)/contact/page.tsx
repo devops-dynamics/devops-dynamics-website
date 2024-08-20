@@ -1,15 +1,6 @@
 "use client";
-import TextInput from "@/components/Input/TextInput";
-import { Button } from "@/components/ui/button";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import React, { FormEvent } from "react";
+import { Button, Label } from "@/components/ui";
 import {
     Select,
     SelectContent,
@@ -20,10 +11,6 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Facebook, Twitter } from "@/constants/icons";
-// import { SelectContent } from "@radix-ui/react-select";
-// import { RadioGroup } from "@radix-ui/react-dropdown-menu";
-import React, { FormEvent } from "react";
 
 const page = () => {
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
