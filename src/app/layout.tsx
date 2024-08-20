@@ -22,7 +22,7 @@ export default function Layout({
         <html lang="en">
             <body
                 className={cn(
-                    "min-h-screen bg-background font-sans antialiased",
+                    "min-h-screen bg-foreground font-sans antialiased",
                     fontSans.variable,
                 )}
             >
@@ -32,7 +32,9 @@ export default function Layout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <main className="p-4">{children}</main>
+                    <main className="rounded-t-[72px] bg-background p-4">
+                        {children}
+                    </main>
                 </ThemeProvider>
             </body>
         </html>

@@ -14,8 +14,10 @@ function PageHeader({
     return (
         <div className="my-16 space-y-8">
             <h1 className="text-base font-bold">{pageHeaderTitle}</h1>
-            <h2 className="text-5xl font-semibold">{pageHeaderSubtitle}</h2>
-            <h3 className="max-w-3xl text-lg font-medium text-muted-foreground">
+            <h2 className="max-w-xl text-5xl font-light">
+                {pageHeaderSubtitle}
+            </h2>
+            <h3 className="max-w-2xl text-base font-medium text-muted-foreground">
                 {pageHeaderDescription}
             </h3>
             {children}

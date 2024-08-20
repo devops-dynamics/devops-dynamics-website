@@ -290,4 +290,74 @@ const works = {
     ],
 };
 
-export { footer, about, services, works };
+const homePage = {
+    header: {
+        title: "Welcome to DevOps Dynamics",
+        subtitle: "Award-winning development studio based in Denmark.",
+        description:
+            "We are a development studio working at the intersection of design and technology. It’s a really busy intersection though — a lot of our staff have been involved in hit and runs.",
+    },
+    workedWith: {
+        title: "We've worked with",
+        clients: [
+            {
+                name: "Company A",
+                image: "/company-a.jpg",
+            },
+            {
+                name: "Company B",
+                image: "/company-b.jpg",
+            },
+            {
+                name: "Company C",
+                image: "/company-c.jpg",
+            },
+            {
+                name: "Company D",
+                image: "/company-d.jpg",
+            },
+            {
+                name: "Company E",
+                image: "/company-d.jpg",
+            },
+            {
+                name: "Company F",
+                image: "/company-d.jpg",
+            },
+            {
+                name: "Company D",
+                image: "/company-d.jpg",
+            },
+            {
+                name: "Company D",
+                image: "/company-d.jpg",
+            },
+            {
+                name: "Company D",
+                image: "/company-d.jpg",
+            },
+        ],
+    },
+    works: {
+        title: "Some of our works",
+        subtitle: "Proven solutions for real-world problems",
+        description:
+            "We believe technology is the answer to the world’s greatest challenges. It’s also the cause, so we find ourselves in bit of a catch 22 situation.",
+        workDetails: works.workDetails,
+    },
+    testimonial: {
+        quote: "The team at Studio went above and beyond with our onboarding, even finding a way to access the user’s microphone without triggering one of those annoying permission dialogs.",
+        companyName: "Phobia",
+        companyLogo: "/company-a.jpg",
+    },
+    services: {
+        title: "Services",
+        subtitle:
+            "We help you identify, explore and respond to new opportunities.",
+        description:
+            "As long as those opportunities involve giving us money to re-purpose old projects — we can come up with an endless number of those.",
+        serviceDetails: services.servicesDetails,
+    },
+};
+
+export { footer, about, services, works, homePage, contact };
