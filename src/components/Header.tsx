@@ -4,31 +4,11 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Package2 } from "lucide-react";
 import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle";
-
-const links = [
-    {
-        id: 1,
-        title: "Services",
-        path: "/services",
-    },
-    {
-        id: 2,
-        title: "Work",
-        path: "/works",
-    },
-    {
-        id: 3,
-        title: "Blogs",
-        path: "/blogs",
-    },
-    {
-        id: 4,
-        title: "About",
-        path: "/about",
-    },
-];
+import { header } from "@/constants/staticData";
+import NavLink from "./NavLink";
 
 const Header = () => {
+    const { navigation } = header;
     return (
         <header className="sticky top-0 z-50 mx-auto my-6 flex h-16 w-full max-w-7xl items-center gap-4 bg-background px-8 md:px-6">
             <nav className="hidden w-full flex-col gap-8 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
@@ -41,15 +21,11 @@ const Header = () => {
                         <span className="text-xl font-extrabold">LOGO</span>
                     </Link>
                     <div className="float-right flex space-x-8">
-                        {links.map((item) => {
+                        {navigation.links.map((item) => {
                             return (
-                                <Link
-                                    key={item.id}
-                                    href={item.path}
-                                    className="flex items-center gap-2 text-xl font-semibold text-muted-foreground hover:text-foreground hover:underline hover:underline-offset-8 md:text-base"
-                                >
+                                <NavLink key={item.id} href={item.path}>
                                     {item.title}
-                                </Link>
+                                </NavLink>
                             );
                         })}
                         <Link
@@ -83,7 +59,7 @@ const Header = () => {
                             <Package2 className="h-6 w-6" />
                             <span className="sr-only">Acme Inc</span>
                         </Link>
-                        {links.map((item) => {
+                        {navigation.links.map((item) => {
                             return (
                                 <Link
                                     key={item.id}

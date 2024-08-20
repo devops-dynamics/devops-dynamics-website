@@ -1,6 +1,33 @@
 import { title } from "process";
 import { date } from "zod";
 
+const header = {
+    navigation: {
+        links: [
+            {
+                id: 1,
+                title: "Services",
+                path: "/services",
+            },
+            {
+                id: 2,
+                title: "Work",
+                path: "/works",
+            },
+            {
+                id: 3,
+                title: "Blogs",
+                path: "/blogs",
+            },
+            {
+                id: 4,
+                title: "About",
+                path: "/about",
+            },
+        ],
+    },
+};
+
 const footer = {
     services: [
         {
@@ -360,4 +387,4 @@ const homePage = {
     },
 };
 
-export { footer, about, services, works, homePage, contact };
+export { header, footer, about, services, works, homePage, contact };
