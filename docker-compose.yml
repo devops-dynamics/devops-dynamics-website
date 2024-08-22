@@ -1,0 +1,14 @@
+services:
+  devops-dynamics-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: "${REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
+    ports:
+      - "3000:3000"
+    restart: unless-stopped  # Automatically restart the container unless it is explicitly stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 1m30s
+      timeout: 10s
+      retries: 3

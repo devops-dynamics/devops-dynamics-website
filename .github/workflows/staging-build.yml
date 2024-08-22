@@ -1,0 +1,78 @@
+name: Staging - Build Docker Image
+
+on:
+  push:
+    branches:
+      - staging
+
+  workflow_dispatch:  # Allows manual trigger with branch name and commit ID
+    inputs:
+      branch:
+        description: 'Branch name to use in the image tag'
+        required: true
+        type: string
+      commit_id:
+        description: 'Commit ID to use in the image tag'
+        required: true
+        type: string
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: devopsdynamics/devops-dynamics-website
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    environment: staging  # Ensure that the environment is correctly referenced
+    strategy:
+      matrix:
+        platform: [amd64, arm64]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Determine branch and commit ID
+        if: github.event_name == 'push'
+        id: determine_ref
+        run: |
+          BRANCH_NAME="${{ github.ref_name }}"
+          COMMIT_ID="${{ github.sha }}"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "COMMIT_ID=$COMMIT_ID" >> $GITHUB_ENV
+
+      - name: Set branch and commit ID for manual build
+        if: github.event_name == 'workflow_dispatch'
+        id: manual_ref
+        run: |
+          echo "BRANCH_NAME=${{ github.event.inputs.branch }}" >> $GITHUB_ENV
+          echo "COMMIT_ID=${{ github.event.inputs.commit_id }}" >> $GITHUB_ENV
+
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          envkey_DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          envkey_TOKEN_SECRET: ${{ secrets.TOKEN_SECRET }}
+          envkey_BASE_URL: ${{ secrets.BASE_URL }}
+          envkey_NEXT_PUBLIC_BASE_URL: ${{ secrets.NEXT_PUBLIC_BASE_URL }}
+          file_name: .env  # Creates the .env file in the root of the repository
+          fail_on_empty: true  # This will fail the action if any env key is empty
+
+      - name: Log in to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push Docker image for ${{ matrix.platform }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/${{ matrix.platform }}
+          push: true
+          tags: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.platform }}-${{ env.BRANCH_NAME }}-${{ env.COMMIT_ID }}
