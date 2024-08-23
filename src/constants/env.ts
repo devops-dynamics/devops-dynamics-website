@@ -6,6 +6,10 @@ const env = {
     auth: {
         tokenSecret: "",
     },
+    supabase: {
+        url: "",
+        publicAnonKey: "",
+    },
 };
 
 export default env;

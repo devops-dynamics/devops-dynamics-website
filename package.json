@@ -22,6 +22,7 @@
         "@radix-ui/react-select": "^2.1.1",
         "@radix-ui/react-separator": "^1.1.0",
         "@radix-ui/react-slot": "^1.1.0",
+        "@supabase/supabase-js": "^2.45.1",
         "axios": "^1.7.4",
         "bcryptjs": "^2.4.3",
         "class-variance-authority": "^0.7.0",
@@ -40,7 +41,6 @@
     },
     "devDependencies": {
         "@prisma/client": "^5.18.0",
-        "@tailwindcss/forms": "^0.5.7",
         "@tailwindcss/typography": "^0.5.14",
         "@types/bcrypt": "^5.0.2",
         "@types/bcryptjs": "^2.4.6",
