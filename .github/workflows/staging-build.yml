@@ -4,6 +4,14 @@ on:
   push:
     branches:
       - staging
+    paths-ignore:
+      - '.dockerignore'
+      - '.env.sample'
+      - '.github/CODEOWNERS'
+      - '.github/workflows/production-build.yml'
+      - '.github/workflows/production-deploy.yml'
+      - '.gitignore'
+      - 'README.md'
 
   workflow_dispatch:  # Allows manual trigger with branch name and commit ID
     inputs:
