@@ -15,10 +15,6 @@ on:
 
   workflow_dispatch:  # Allows manual trigger with branch name and commit ID
     inputs:
-      branch:
-        description: 'Branch name to use in the image tag'
-        required: true
-        type: string
       commit_id:
         description: 'Commit ID to use in the image tag'
         required: true
@@ -31,7 +27,7 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    environment: staging  # Ensure that the environment is correctly referenced
+    environment: production  # Ensure that the environment is correctly referenced
     strategy:
       matrix:
         platform: [amd64, arm64]
@@ -43,11 +39,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Determine branch and commit ID
+      - name: Determine commit ID
         if: github.event_name == 'push'
         id: determine_ref
         run: |
-          BRANCH_NAME="${{ github.ref_name }}"
+          BRANCH_NAME="production"
           COMMIT_ID="${{ github.sha }}"
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
           echo "COMMIT_ID=$COMMIT_ID" >> $GITHUB_ENV
