@@ -1,0 +1,74 @@
+name: Production - Deploy Docker Image
+
+on:
+  workflow_run:
+    workflows: ["Production - Build Docker Image"]
+    types:
+      - completed
+
+  workflow_dispatch:  # Allows manual trigger with branch name and commit ID
+    inputs:
+      commit_id:
+        description: 'Commit ID to use in the image tag'
+        required: true
+        type: string
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: devopsdynamics/devops-dynamics-website
+  COMPOSE_FILE_URL: https://raw.githubusercontent.com/devops-dynamics/devops-dynamics-website/production/docker-compose.yml
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Set up branch and commit ID for automatic run
+        if: github.event_name == 'workflow_run'
+        run: |
+          echo "BRANCH_NAME=${{ github.event.workflow_run.head_branch }}" >> $GITHUB_ENV
+          echo "COMMIT_ID=${{ github.event.workflow_run.head_sha }}" >> $GITHUB_ENV
+
+      - name: Set up branch and commit ID for manual run
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          echo "BRANCH_NAME=production" >> $GITHUB_ENV
+          echo "COMMIT_ID=${{ github.event.inputs.commit_id }}" >> $GITHUB_ENV
+
+      - name: Clean up existing Docker containers, images, and volumes
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PRODUCTION_SERVER_HOST }}
+          username: ${{ secrets.PRODUCTION_SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "Removing existing Docker containers, images, and volumes related to the previous compose setup"
+            docker compose -f docker-compose.yml down --rmi all --volumes || true
+            docker system prune -f
+            rm -f docker-compose.yml
+
+      - name: Fetch new Docker Compose file and update it
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PRODUCTION_SERVER_HOST }}
+          username: ${{ secrets.PRODUCTION_SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "Fetching and updating the Docker Compose file"
+            curl -o docker-compose.yml ${{ env.COMPOSE_FILE_URL }}
+            sed -i "s|image:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:arm64-${{ env.BRANCH_NAME }}-${{ env.COMMIT_ID }}|g" docker-compose.yml
+
+      - name: Deploy updated Docker Compose
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.PRODUCTION_SERVER_HOST }}
+          username: ${{ secrets.PRODUCTION_SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            echo "Deploying updated Docker Compose"
+            docker compose -f docker-compose.yml pull devops-dynamics-website
+            docker compose -f docker-compose.yml up -d devops-dynamics-website

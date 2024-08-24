@@ -1,15 +1,15 @@
-name: Staging - Build Docker Image
+name: Production - Build Docker Image
 
 on:
   push:
     branches:
-      - staging
+      - production
     paths-ignore:
       - '.dockerignore'
       - '.env.sample'
       - '.github/CODEOWNERS'
-      - '.github/workflows/production-build.yml'
-      - '.github/workflows/production-deploy.yml'
+      - '.github/workflows/staging-build.yml'
+      - '.github/workflows/staging-deploy.yml'
       - '.gitignore'
       - 'README.md'
 
