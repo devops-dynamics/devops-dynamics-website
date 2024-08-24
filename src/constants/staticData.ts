@@ -133,7 +133,7 @@ const about = {
                 "Suyash is a seasoned DevOps Engineer and Linux System Administrator with a passion for technology and innovation. He holds an AWS Certified Solutions Architect - Associate certification and a Bachelor of Engineering in Computer Engineering.",
         },
         {
-            name: "Vrushali Kundande",
+            name: "Vrushali Kudande",
             position: "Linux SysAdmin",
             link: "https://www.linkedin.com/in/janedoe",
             image: "/user.jpeg",
@@ -159,7 +159,7 @@ const about = {
                 "Suyash is a seasoned DevOps Engineer and Linux System Administrator with a passion for technology and innovation. He holds an AWS Certified Solutions Architect - Associate certification and a Bachelor of Engineering in Computer Engineering.",
         },
         {
-            name: "Vrushali Kundande",
+            name: "Vrushali Kudande",
             position: "Linux SysAdmin",
             link: "https://www.linkedin.com/in/janedoe",
             image: "/user.jpeg",
@@ -207,67 +207,67 @@ const services = {
     servicesDetails: [
         {
             id: 1,
-            title: "Brand Identity",
+            title: "DevOps & Solutions Architecture",
             description:
-                "We help you create a brand identity that resonates with your target audience.",
+                "We design and implement scalable, automated infrastructure tailored to your business.",
         },
         {
             id: 2,
             title: "Web Development",
             description:
-                "Our team of expert web developers will bring your vision to life.",
+                "Our developers create responsive, user-friendly web applications that meet your business needs.",
         },
         {
             id: 3,
-            title: "SEO Optimization",
+            title: "Network & System Administration",
             description:
-                "We will help you optimize your website to improve your search engine rankings.",
+                "We optimize and manage server environments for maximum reliability and performance.",
         },
         {
             id: 4,
-            title: "Social Media Marketing",
+            title: "CI/CD Pipeline Implementation",
             description:
-                "We will help you create a social media marketing strategy that drives results.",
+                "We streamline your development process with efficient CI/CD pipeline setups.",
         },
     ],
     faq: [
         {
             id: 1,
             question: "What is your refund policy?",
-            answer: "We offer a 30-day money-back guarantee on all of our services.",
+            answer: "Refunds are handled on a case-by-case basis, depending on the project's terms and conditions.",
         },
         {
             id: 2,
             question: "How long does it take to complete a project?",
-            answer: "The time it takes to complete a project depends on the scope and complexity of the project.",
+            answer: "Project timelines vary based on scope and complexity. We work closely with clients to meet agreed deadlines.",
         },
         {
             id: 3,
             question: "Do you offer custom packages?",
-            answer: "Yes, we offer custom packages tailored to meet the specific needs of our clients.",
+            answer: "Yes, we tailor our services to fit the unique needs and goals of each client..",
         },
         {
             id: 4,
             question: "What payment methods do you accept?",
-            answer: "We accept all major credit cards, PayPal, and bank transfers.",
+            answer: "We accept payments via Wise and bank transfers.",
         },
         {
             id: 5,
             question: "Do you offer ongoing support?",
-            answer: "Yes, we offer ongoing support to all of our clients to ensure that their websites are running smoothly.",
+            answer: "Yes, we provide ongoing support to ensure your systems and applications run smoothly.",
         },
     ],
 };
 
 // contact information
 const contact = {
-    email: "",
+    email: "suyash@devops-dynamics.com",
     phone: "",
-    address: "",
+    address: "Pune, India",
     social: {
         twitter: "",
         facebook: "",
-        linkedin: "",
+        linkedin: "https://www.linkedin.com/company/devops-dynamics",
         instagram: "",
     },
 };
@@ -320,9 +320,9 @@ const works = {
 const homePage = {
     header: {
         title: "Welcome to DevOps Dynamics",
-        subtitle: "Award-winning development studio based in Denmark.",
+        subtitle: "DevOps & Web Development Agency based in Pune, India.",
         description:
-            "We are a development studio working at the intersection of design and technology. It’s a really busy intersection though — a lot of our staff have been involved in hit and runs.",
+            "At DevOps Dynamics, we are committed to transforming your business with cutting-edge DevOps practices, infrastructure management, and web development solutions. Our mission is to bridge the gap between development and operations, ensuring seamless deployments, scalable infrastructures, and optimized performance for your projects.",
     },
     workedWith: {
         title: "We've worked with",
