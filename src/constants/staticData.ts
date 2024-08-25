@@ -31,10 +31,6 @@ const header = {
 const footer = {
     services: [
         {
-            title: "1on1 Coaching",
-            link: "#",
-        },
-        {
             title: "Company Review",
             link: "#",
         },
@@ -61,10 +57,6 @@ const footer = {
             title: "Meet the Team",
             link: "#",
         },
-        {
-            title: "Accounts Review",
-            link: "#",
-        },
     ],
 
     helpfulLinks: [
@@ -74,10 +66,6 @@ const footer = {
         },
         {
             title: "FAQs",
-            link: "#",
-        },
-        {
-            title: "Live Chat",
             link: "#",
         },
     ],

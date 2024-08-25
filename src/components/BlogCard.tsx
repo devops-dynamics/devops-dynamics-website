@@ -6,7 +6,7 @@ import React from "react";
 function BlogCard({ blog }: { blog: Blog }) {
     const { id, image, title, author_id, description } = blog;
     return (
-        <article className="relative overflow-hidden rounded-lg shadow transition hover:shadow-lg hover:outline hover:outline-white">
+        <article className="relative m-6 overflow-hidden rounded-lg shadow transition hover:shadow-lg hover:outline hover:outline-white md:m-4">
             {/* <div className="left-0 top-16 z-10 overflow-hidden rounded-lg border border-white shadow transition hover:shadow-lg"> */}
 
             {/* </div> */}
@@ -38,18 +38,12 @@ function BlogCard({ blog }: { blog: Blog }) {
 
                 <Link href={"/blogs/123"}>
                     <h3 className="mt-4 text-lg font-semibold text-slate-800 hover:underline dark:text-white">
-                        {/* How to position your furniture for positivity */}
-                        Lorem ipsum dolor sit amet consectetur.
+                        {title}
                     </h3>
                 </Link>
 
-                <p className="mt-2 line-clamp-3 text-sm/relaxed text-slate-700 dark:text-gray-200">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Recusandae dolores, possimus pariatur animi temporibus
-                    nesciunt praesentium dolore sed nulla ipsum eveniet corporis
-                    quidem, mollitia itaque minus soluta, voluptates neque
-                    explicabo tempora nisi culpa eius atque dignissimos.
-                    Molestias explicabo corporis voluptatem?
+                <p className="mt-2 line-clamp-3 h-24 text-sm/relaxed text-slate-700 dark:text-gray-200">
+                    {description}
                 </p>
             </div>
         </article>
