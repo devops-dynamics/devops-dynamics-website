@@ -36,7 +36,7 @@ function BlogCard({ blog }: { blog: Blog }) {
                     10th Oct 2022{" "}
                 </time>
 
-                <Link href={"/blogs/123"}>
+                <Link href={`/blogs/${id}`}>
                     <h3 className="mt-4 text-lg font-semibold text-slate-800 hover:underline dark:text-white">
                         {title}
                     </h3>

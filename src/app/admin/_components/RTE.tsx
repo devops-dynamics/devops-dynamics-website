@@ -5,7 +5,19 @@ import { Textarea } from "@/components/ui/textarea";
 import { marked } from "marked";
 import { Loader2 } from "lucide-react";
 
-function RTE() {
+function RTE({
+    id,
+    name,
+    placeholder,
+    rows,
+    defaultValue,
+}: {
+    id?: string;
+    name?: string;
+    placeholder?: string;
+    rows?: number;
+    defaultValue?: string;
+}) {
     const [input, setInput] = useState("");
     const [renderedHtmlPreview, setRenderedHtmlPreview] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -43,8 +55,11 @@ function RTE() {
             </TabsList>
             <TabsContent value="edit">
                 <Textarea
-                    placeholder="Enter your content here"
-                    rows={30}
+                    id={id || "description"}
+                    name={name || "description"}
+                    placeholder={placeholder || "Enter your content here"}
+                    rows={rows || 30}
+                    defaultValue={defaultValue || ""}
                     value={input}
                     onChange={handleInputChange}
                 />

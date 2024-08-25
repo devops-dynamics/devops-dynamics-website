@@ -39,7 +39,7 @@ const BlogForm = ({
                         />
                         {error?.title && <p>{error.title}</p>}
                     </div>
-                    <div className="grid gap-2">
+                    {/* <div className="grid gap-2">
                         <Label htmlFor="description">Blog Content</Label>
                         <Textarea
                             id="description"
@@ -49,10 +49,16 @@ const BlogForm = ({
                             defaultValue={blog?.description || ""}
                         />
                         {error?.description && <p>{error.description}</p>}
-                    </div>
+                    </div> */}
                     {/* RTE */}
-                    <div>
-                        <RTE />
+                    <div className="grid gap-2">
+                        <Label htmlFor="description">Blog Content</Label>
+                        <RTE
+                            id="description"
+                            name="description"
+                            placeholder="Provide a brief description of your blog post"
+                            defaultValue={blog?.description}
+                        />
                     </div>
                     <div>
                         <Label>Tags</Label>
