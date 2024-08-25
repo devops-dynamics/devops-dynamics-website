@@ -33,6 +33,9 @@ const BlogGrid = async () => {
             description: true,
             author_id: true,
         },
+        // orderBy: {
+        //     createdAt: "desc",
+        // }
     });
     // console.log(allBlogs);
     return (

@@ -18,11 +18,9 @@ const page = () => {
         <div>
             <PageHeader>
                 <span>Blogs</span>
-                <Link href={`/admin/user/new`}>
-                    <Button asChild>
-                        <Link href={`/admin/blog/new`}>Add New Blog</Link>
-                    </Button>
-                </Link>
+                <Button asChild>
+                    <Link href={`/admin/blog/new`}>Add New Blog</Link>
+                </Button>
             </PageHeader>
 
             <BlogTable />
