@@ -14,16 +14,19 @@ export default function Home() {
                 pageHeaderDescription={header.description}
             />
             {/* we have worked with */}
-            <section className="my-16 w-full space-y-4 rounded-3xl bg-gradient-to-r from-blue-950 to-slate-800 p-12 text-white">
+            <section className="my-16 w-full space-y-4 rounded-3xl bg-gradient-to-r from-blue-950 to-slate-800 p-6 text-white sm:p-12">
                 <h2 className="text-center font-semibold">
                     We have worked with hundreds of amazing people
                 </h2>
                 <Separator className="bg-white/30" />
                 <div className="grid grid-cols-1 place-items-center gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {workedWith.clients.map((client, index) => (
-                        <div key={index} className="flex items-center gap-4">
-                            <div className="h-[48px] w-[48px] rounded-full bg-white" />
-                            <div className="font-medium italic">
+                        <div
+                            key={index}
+                            className="flex items-center gap-6 md:gap-4"
+                        >
+                            <div className="h-[44px] w-[44px] rounded-full bg-white md:h-[40px] md:w-[40px]" />
+                            <div className="text-lg font-medium italic md:text-base">
                                 {client.name}
                             </div>
                         </div>
@@ -37,7 +40,7 @@ export default function Home() {
                     pageHeaderSubtitle={works.subtitle}
                     pageHeaderDescription={works.description}
                 />
-                <div className="flex flex-wrap justify-between gap-4">
+                <div className="grid grid-cols-1 place-items-center justify-between gap-4 sm:grid-cols-2 md:grid-cols-3">
                     <WorkCard />
                     <WorkCard />
                     <WorkCard />
@@ -65,10 +68,10 @@ export default function Home() {
                     pageHeaderDescription={services.description}
                 />
                 <div className="flex flex-col items-center md:flex-row">
-                    <div className="h-[400px] w-1/2 rounded-3xl bg-purple-700 p-4">
+                    <div className="h-[400px] w-full rounded-3xl bg-purple-700 p-4 md:w-1/2">
                         {/* <Image src={"/placeholder.jpeg"}/> */}
                     </div>
-                    <div className="w-1/2 space-y-8 p-8">
+                    <div className="w-full space-y-8 p-8 md:w-1/2">
                         {services.serviceDetails.map((service) => (
                             <div
                                 key={service.id}
