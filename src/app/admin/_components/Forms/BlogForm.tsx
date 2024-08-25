@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Blog, Tag } from "@prisma/client";
 import { addBlog, updateBlog } from "../../_actions/blog";
+import RTE from "../RTE";
 
 const BlogForm = ({
     tags,
@@ -48,6 +49,10 @@ const BlogForm = ({
                             defaultValue={blog?.description || ""}
                         />
                         {error?.description && <p>{error.description}</p>}
+                    </div>
+                    {/* RTE */}
+                    <div>
+                        <RTE />
                     </div>
                     <div>
                         <Label>Tags</Label>
