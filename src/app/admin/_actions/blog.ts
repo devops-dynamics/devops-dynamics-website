@@ -72,6 +72,8 @@ export async function addBlog(
 
 const updateBlogSchema = addBlogSchema.extend({
     id: z.string(),
+    image: imageSchema.optional(),
+    // newImage: imageSchema.optional(),
 });
 
 export async function updateBlog(
@@ -88,10 +90,26 @@ export async function updateBlog(
             return result.error.formErrors.fieldErrors;
         }
         const data = result.data;
+        // check if image is updated
+        const blog = await db.blog.findUnique({
+            where: { id },
+            select: {
+                image: true,
+            },
+        });
+        let imageUrl = blog?.image;
+        if (data.image != null && data.image.size > 0) {
+            // image is updated
+            // upload the new image
+            imageUrl = await uploadFile(data.image);
+            // delete the old image from db
+        }
+        // let imageUrl = data.image;
         await db.blog.update({
             where: { id },
             data: {
                 title: data.title,
+                image: imageUrl,
                 description: data.description,
                 tags: {
                     connect: data.blogTags?.map((id) => ({ id })),
