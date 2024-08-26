@@ -1,76 +1,35 @@
 "use client";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { useState } from "react";
-// import supabase from "@supabase/supabase-js";
-import { Button } from "@/components/ui";
-import Image from "next/image";
-import supabase from "@/lib/supabaseClient";
-// import { SupabaseClient } from "@supabase/supabase-js";
+import uploadFile from "@/lib/uploadFile";
 
-export function InputFile() {
+export function InputImage({ ...props }: { [key: string]: any }) {
     const [file, setFile] = useState<File | null>(null);
-    const [uploading, setUploading] = useState(false);
-    const [fileUrl, setFileUrl] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
-
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!e.target.files) return;
+        console.log(e.target.files[0]);
+
         setFile(e.target.files[0]);
     };
 
-    const handleUpload = async () => {
-        try {
-            if (!file) return;
-            setUploading(true);
-
-            const fileExt = file.name.split(".").pop();
-            const fileName = `${Date.now()}.${fileExt}`;
-            const filePath = `${fileName}`;
-
-            let { error } = await supabase.storage
-                .from("bucketName")
-                .upload(filePath, file);
-
-            if (error) {
-                throw error;
-            }
-
-            const { data: url } = await supabase.storage
-                .from("bucketName")
-                .getPublicUrl(filePath);
-
-            setFileUrl(url.publicUrl);
-
-            console.log(url.publicUrl);
-
-            setUploading(false);
-            setError(null);
-            alert("File uploaded Successfully");
-        } catch (error: any) {
-            setError(error.message);
-            setUploading(false);
-        }
-    };
+    // const handleUpload = async () => {
+    //     try {
+    //         if (!file) return;
+    //         const publicUrl = await uploadFile(file);
+    //         console.log(publicUrl);
+    //     } catch (error: any) {
+    //         console.log(error.message);
+    //     }
+    // };
 
     return (
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="picture">Picture</Label>
-            <Input id="picture" type="file" />
-            <Button onClick={handleUpload} disabled={uploading}>
-                Upload
-            </Button>
-            <div>
-                {fileUrl && (
-                    <Image
-                        src={fileUrl}
-                        alt="uploaded file"
-                        height={300}
-                        width={400}
-                    />
-                )}
-            </div>
-        </div>
+        <Input
+            id="picture"
+            type="file"
+            onChange={handleFileChange}
+            // onSubmit={handleUpload}
+            {...props}
+        />
     );
 }
 

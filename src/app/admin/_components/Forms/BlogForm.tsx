@@ -3,7 +3,6 @@ import React from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Blog, Tag } from "@prisma/client";
@@ -39,18 +38,17 @@ const BlogForm = ({
                         />
                         {error?.title && <p>{error.title}</p>}
                     </div>
-                    {/* <div className="grid gap-2">
-                        <Label htmlFor="description">Blog Content</Label>
-                        <Textarea
-                            id="description"
-                            name="description"
-                            placeholder="Provide a brief description of your blog post"
-                            rows={40}
-                            defaultValue={blog?.description || ""}
+                    <div className="grid gap-2">
+                        <Label htmlFor="title">Blog Cover Image</Label>
+                        <Input
+                            id="image"
+                            name="image"
+                            type="file"
+                            placeholder="Enter a catchy title"
+                            defaultValue={blog?.title || ""}
                         />
-                        {error?.description && <p>{error.description}</p>}
-                    </div> */}
-                    {/* RTE */}
+                        {error?.title && <p>{error.title}</p>}
+                    </div>
                     <div className="grid gap-2">
                         <Label htmlFor="description">Blog Content</Label>
                         <RTE

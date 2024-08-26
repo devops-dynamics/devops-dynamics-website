@@ -1,11 +1,19 @@
 "use server";
 
 import db from "@/db/db";
+import uploadFile from "@/lib/uploadFile";
 import { revalidatePath } from "next/cache";
 import { notFound, redirect } from "next/navigation";
 import { z } from "zod";
 
+const fileSchema = z.instanceof(File, { message: "Required" });
+
+const imageSchema = fileSchema.refine(
+    (file) => file.size === 0 || file.type.startsWith("image/"),
+);
+
 const addBlogSchema = z.object({
+    image: imageSchema.refine((file) => file.size > 0, "Required"),
     title: z.string().min(1),
     description: z.string(),
     blogTags: z.array(z.number()).optional(),
@@ -40,12 +48,15 @@ export async function addBlog(
         }
         const data = result.data;
 
+        // upload image using uploadFile function
+        const imageUrl = await uploadFile(data.image);
+
         await db.blog.create({
             data: {
                 title: data.title,
                 description: data.description,
                 author_id: user.profile.id,
-                image: "",
+                image: imageUrl,
                 tags: {
                     connect: data.blogTags?.map((id) => ({ id })),
                 },
@@ -99,7 +110,6 @@ export async function fetchBlogs(userId?: string) {
     const blogs = await db.blog.findMany({ where: { author_id: userId } });
     return blogs;
 }
-
 
 // export const deleteBlog = async (id: string) => {
 

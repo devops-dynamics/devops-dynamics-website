@@ -60,7 +60,12 @@ const page = async ({ params }: { params: { id: string } }) => {
             </div>
             {/* Blog Image */}
             <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-red-50">
-                <Image src={"/placeholder2.avif"} alt="" fill={true} />
+                <Image
+                    src={blog?.image || "/placeholder2.avif"}
+                    alt=""
+                    fill={true}
+                    priority={false}
+                />
             </div>
             {/* Blog Content */}
             <article

@@ -18,7 +18,7 @@ function RTE({
     rows?: number;
     defaultValue?: string;
 }) {
-    const [input, setInput] = useState("");
+    const [input, setInput] = useState(defaultValue || "");
     const [renderedHtmlPreview, setRenderedHtmlPreview] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [activeTab, setActiveTab] = useState<"edit" | "preview">("edit");
@@ -59,7 +59,6 @@ function RTE({
                     name={name || "description"}
                     placeholder={placeholder || "Enter your content here"}
                     rows={rows || 30}
-                    defaultValue={defaultValue || ""}
                     value={input}
                     onChange={handleInputChange}
                 />
