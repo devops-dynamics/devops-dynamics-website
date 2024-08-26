@@ -19,10 +19,10 @@ export default function ProfileForm({ profile }: { profile: Profile }) {
             <div className="mx-8 w-full max-w-4xl rounded-xl bg-card p-10 sm:p-12 md:p-16">
                 <div className="flex flex-col items-center gap-8">
                     <form action={action} className="grid w-full gap-6">
-                        {/* <div className="w-full items-center gap-1.5">
+                        <div className="w-full items-center gap-1.5">
                             <Label htmlFor="profileImage">Profile Image</Label>
                             <Input id="profileImage" type="file" />
-                        </div> */}
+                        </div>
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                             <div className="space-y-2">
                                 <Label htmlFor="displayName">

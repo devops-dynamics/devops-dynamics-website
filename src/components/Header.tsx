@@ -8,17 +8,22 @@ import { header } from "@/constants/staticData";
 import NavLink from "./NavLink";
 
 const Header = () => {
+    // if (typeof window !== "undefined") {
+    // }
+
     const { navigation } = header;
     return (
         <header className="sticky top-0 z-50 mx-auto my-6 flex h-16 w-full max-w-7xl items-center gap-4 bg-background px-8 md:px-6">
             <nav className="hidden w-full flex-col gap-8 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                 <div className="flex w-full justify-between">
                     <Link
-                        href="#"
+                        href="/"
                         className="flex items-center gap-2 text-lg font-semibold md:text-base"
                     >
                         <Package2 className="h-6 w-6" />
-                        <span className="text-xl font-extrabold">LOGO</span>
+                        <span className="text-wrap text-base font-extrabold lg:text-lg">
+                            DevopsDynamics
+                        </span>
                     </Link>
                     <div className="float-right flex space-x-8">
                         {navigation.links.map((item) => {
