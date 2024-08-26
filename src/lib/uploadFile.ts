@@ -15,7 +15,20 @@ const uploadFile = async (file: File) => {
     const { data: url } = await supabase.storage
         .from(bucketName)
         .getPublicUrl(filePath);
+
     return url.publicUrl;
+};
+
+// deleting file from storage using imageUrl(public url) as parameter
+const deleteFile = async (imageUrl: string) => {
+    const filePath = imageUrl.split("/").pop();
+    let { data, error } = await supabase.storage
+        .from(bucketName)
+        .remove([filePath!]);
+    if (error) {
+        throw error;
+    }
+    return data;
 };
 
 export default uploadFile;
