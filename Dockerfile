@@ -18,9 +18,6 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Delete the .env file after the build stage
-RUN rm -f .env
-
 # Expose port 3000
 EXPOSE 3000
 
