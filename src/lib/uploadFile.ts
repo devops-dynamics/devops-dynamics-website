@@ -1,6 +1,7 @@
+import env from "@/constants/env";
 import supabase from "./supabaseClient";
 
-const bucketName = "DD_TEST_BUCKET";
+const bucketName = env.supabase.storage.bucketName;
 
 const uploadFile = async (file: File) => {
     const fileExt = file.name.split(".").pop();
@@ -19,7 +20,6 @@ const uploadFile = async (file: File) => {
     return url.publicUrl;
 };
 
-// deleting file from storage using imageUrl(public url) as parameter
 const deleteFile = async (imageUrl: string) => {
     const filePath = imageUrl.split("/").pop();
     let { data, error } = await supabase.storage
