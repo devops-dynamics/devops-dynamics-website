@@ -2,6 +2,7 @@
 import db from "@/db/db";
 import { marked } from "marked";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const page = async ({ params }: { params: { id: string } }) => {
@@ -44,9 +45,12 @@ const page = async ({ params }: { params: { id: string } }) => {
                         width={52}
                         className="rounded-full"
                     />
-                    <p className="text-lg font-semibold text-foreground">
+                    <Link
+                        href={`/profile/${blog?.author_id}`}
+                        className="text-lg font-semibold text-foreground hover:underline"
+                    >
                         {blog?.author.display_name}
-                    </p>
+                    </Link>
                     {/* divider */}
                     <div className="h-8 w-1 bg-foreground/20"></div>
                     {/* date time */}

@@ -1,13 +1,11 @@
 "use client";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PageHeader } from "../Header/PageHeader";
 import { Button } from "@/components/ui/button";
-// import { toast } from "react-hot-toast";
 
 export default function LoginForm() {
     const router = useRouter();
@@ -18,19 +16,18 @@ export default function LoginForm() {
     const [buttonDisabled, setButtonDisabled] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const onLogin = async () => {
+    const onLogin = async (e: FormEvent) => {
         try {
+            e.preventDefault();
             setLoading(true);
             const response = await axios.post(
                 `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/login`,
                 user,
             );
             console.log("Login success", response.data);
-            // toast.success("Login success");
             router.push("/admin/profile");
         } catch (error: any) {
             console.log("Login failed", error.message);
-            // toast.error(error.message);
         } finally {
             setLoading(false);
         }
@@ -45,7 +42,10 @@ export default function LoginForm() {
     }, [user]);
 
     return (
-        <div className="flex min-h-screen flex-col items-center justify-center space-y-8 py-2">
+        <form
+            className="flex min-h-screen flex-col items-center justify-center space-y-8 py-2"
+            onSubmit={onLogin}
+        >
             <PageHeader>Admin Panel</PageHeader>
             <div className="space-y-2">
                 <Label htmlFor="email" className="font-bold">
@@ -75,7 +75,7 @@ export default function LoginForm() {
                     placeholder="Password"
                 />
             </div>
-            <Button onClick={onLogin}>Login here</Button>
-        </div>
+            <Button type="submit">Login here</Button>
+        </form>
     );
 }
