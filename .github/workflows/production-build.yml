@@ -11,6 +11,7 @@ on:
       - '.github/workflows/staging-build.yml'
       - '.github/workflows/staging-deploy.yml'
       - '.gitignore'
+      - 'INS.md'
       - 'README.md'
 
   workflow_dispatch:  # Allows manual trigger with branch name and commit ID
