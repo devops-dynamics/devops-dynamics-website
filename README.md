@@ -7,8 +7,8 @@ To run this website in your local, your system must have Node.js LTS installed.
 Firstly, clone the github repo to your local system.
 
 ```
-git clone "https://github.com/devops-dynamics/devops-dynamics-website"
-cd ""devops-dynamics-website"
+git clone https://github.com/devops-dynamics/devops-dynamics-website
+cd devops-dynamics-website
 ```
 
 ## 2. Run this command to install all the dependencies
