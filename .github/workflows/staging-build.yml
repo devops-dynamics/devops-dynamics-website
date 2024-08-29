@@ -11,6 +11,7 @@ on:
       - '.github/workflows/production-build.yml'
       - '.github/workflows/production-deploy.yml'
       - '.gitignore'
+      - 'INS.md'
       - 'README.md'
 
   workflow_dispatch:  # Allows manual trigger with branch name and commit ID
