@@ -65,7 +65,7 @@ export const updateProfile = async (
         revalidatePath("/admin/profile");
         redirect("/admin/profile");
     } catch (error) {
-        console.error("Error deleting user:", error);
+        console.error("Error updating profile:", error);
         throw error;
     }
 };

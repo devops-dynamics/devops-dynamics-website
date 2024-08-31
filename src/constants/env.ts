@@ -7,8 +7,8 @@ const env = {
         tokenSecret: "",
     },
     supabase: {
-        url: process.env.NEXT_PUBLIC_SUPABASE_URL || "",
-        publicAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
+        url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        publicAnonKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
         storage: {
             bucketName: process.env.BUCKET_NAME!,
         },

@@ -59,6 +59,7 @@ export default function LoginForm() {
                         setUser({ ...user, email: e.target.value })
                     }
                     placeholder="user@example.com"
+                    autoComplete="off"
                 />
             </div>
             <div className="space-y-2">
@@ -73,6 +74,7 @@ export default function LoginForm() {
                         setUser({ ...user, password: e.target.value })
                     }
                     placeholder="Password"
+                    autoComplete="off"
                 />
             </div>
             <Button type="submit">Login here</Button>

@@ -62,12 +62,12 @@ export async function addBlog(
                 },
             },
         });
-        revalidatePath("/admin/blog");
-        redirect("/admin/blog");
-    } catch (error) {
-        console.error("Error deleting user:", error);
+    } catch (error: any) {
+        console.error("Error Adding Blog:", error.message || error);
         throw error;
     }
+    revalidatePath("/admin/blog");
+    redirect("/admin/blog");
 }
 
 const updateBlogSchema = addBlogSchema.extend({
@@ -116,12 +116,12 @@ export async function updateBlog(
                 },
             },
         });
-        revalidatePath("/admin/blog");
-        redirect("/admin/blog");
     } catch (error) {
         console.error("Error updating blog:", error);
         throw error;
     }
+    revalidatePath("/admin/blog");
+    redirect("/admin/blog");
 }
 
 export async function fetchBlogs(userId?: string) {
