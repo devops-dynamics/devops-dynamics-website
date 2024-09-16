@@ -58,11 +58,12 @@ const page = () => {
                         </div>
                     </div>
                     <form onSubmit={handleSubmit} className="w-full lg:w-1/2">
-                        <div className="w-full space-y-6 rounded-lg border-2 border-muted-foreground py-4 dark:border-muted">
+                        <div className="w-full space-y-6 rounded-2xl border-2 border-muted-foreground py-4 dark:border-muted">
                             <EnquiryFormInput
                                 type="email"
                                 placeholder="Email"
                                 name="email"
+                                className="pt-4"
                             />
                             <EnquiryFormInput
                                 type="text"
@@ -124,13 +125,15 @@ const EnquiryFormInput = ({
     type,
     placeholder,
     name,
+    className,
 }: {
     type: string;
     placeholder: string;
     name: string;
+    className?: string;
 }) => {
     return (
-        <div className="px-0 py-1">
+        <div className={`px-0 py-1 ${className}`}>
             <label
                 htmlFor={name}
                 className="relative block overflow-hidden border-b-2 border-muted-foreground bg-transparent pt-3 dark:border-muted"
