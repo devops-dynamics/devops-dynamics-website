@@ -3,7 +3,18 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-function BlogCard({ blog }: { blog: Blog }) {
+type BlogCardPropsTypes = {
+    blog: Blog;
+    profileImage?: string;
+};
+
+function BlogCard({
+    blog,
+    authorProfileImage,
+}: {
+    blog: Blog;
+    authorProfileImage?: string;
+}) {
     const { id, image, title, author_id, description } = blog;
     return (
         <article className="relative m-6 overflow-hidden rounded-lg shadow transition hover:shadow-lg hover:outline hover:outline-white md:m-4">
@@ -14,13 +25,13 @@ function BlogCard({ blog }: { blog: Blog }) {
                 <Image
                     alt=""
                     className="overflow-hidden object-cover"
-                    src={`/placeholder.avif`}
+                    src={image || `/placeholder.avif`}
                     fill={true}
                 />
             </div>
             <div className="border-3 absolute right-4 top-40 z-10 h-[80px] w-[80px] rounded-full">
                 <Image
-                    src={"/user.jpeg"}
+                    src={authorProfileImage || "/user.jpeg"}
                     alt=""
                     fill={true}
                     className="rounded-full object-cover"

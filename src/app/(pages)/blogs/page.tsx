@@ -25,6 +25,7 @@ const BlogGrid = async () => {
                 select: {
                     id: true,
                     display_name: true,
+                    profile_image: true,
                 },
             },
             title: true,
@@ -41,7 +42,11 @@ const BlogGrid = async () => {
     return (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {allBlogs.map((blog) => (
-                <BlogCard key={blog.id} blog={blog} />
+                <BlogCard
+                    key={blog.id}
+                    blog={blog}
+                    authorProfileImage={blog.author.profile_image}
+                />
             ))}
         </div>
     );
