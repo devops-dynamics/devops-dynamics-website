@@ -1,4 +1,4 @@
-.github/          @devops-team
-.dockerignore     @devops-team
-Dockerfile        @devops-team
-docker-compose.yml @devops-team
+.github/              @devops-dynamics/devops-team
+.dockerignore         @devops-dynamics/devops-team
+Dockerfile            @devops-dynamics/devops-team
+docker-compose.yml    @devops-dynamics/devops-team
