@@ -1,4 +1,24 @@
-.github/              @devops-dynamics/devops-team
-.dockerignore         @devops-dynamics/devops-team
-Dockerfile            @devops-dynamics/devops-team
-docker-compose.yml    @devops-dynamics/devops-team
+# DevOps team for configuration and Docker-related files
+.github/                           @devops-dynamics/devops-team
+.dockerignore                      @devops-dynamics/devops-team
+Dockerfile                         @devops-dynamics/devops-team
+docker-compose.yml                 @devops-dynamics/devops-team
+docker-compose.local.yml           @devops-dynamics/devops-team
+
+# Backend team for Prisma, API, and DB-related files
+prisma/                            @devops-dynamics/backend-team
+src/api/                           @devops-dynamics/backend-team
+src/db/                            @devops-dynamics/backend-team
+lib/supabaseClient.ts              @devops-dynamics/backend-team
+lib/uploadFile.ts                  @devops-dynamics/backend-team
+middleware.ts                      @devops-dynamics/backend-team
+
+# Frontend team for UI and components
+src/app/                           @devops-dynamics/frontend-team
+src/components/                    @devops-dynamics/frontend-team
+src/constants/icons.tsx            @devops-dynamics/frontend-team
+src/providers/ThemeProvider.tsx    @devops-dynamics/frontend-team
+
+# General files for each team
+README.md                          @devops-dynamics/devops-team @devops-dynamics/frontend-team @devops-dynamics/backend-team
+INS.md                             @devops-dynamics/devops-team @devops-dynamics/frontend-team @devops-dynamics/backend-team
