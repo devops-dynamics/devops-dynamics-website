@@ -14,9 +14,12 @@ import {
 
 export default function ThemeToggle() {
     const { setTheme, theme, systemTheme } = useTheme();
+    // React.useEffect(() => {
+    //     setTheme(() => systemTheme || "light");
+    // }, []);
 
     return (
-        <div className="grid h-[36px] w-[36px] place-items-center hover:cursor-pointer">
+        <div className="my-auto grid h-[36px] w-[36px] place-items-center hover:cursor-pointer">
             {theme === "light" ? (
                 <SunIcon
                     onClick={() => {

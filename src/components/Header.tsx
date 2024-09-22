@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle";
 import { header } from "@/constants/staticData";
 import NavLink from "./NavLink";
+import Image from "next/image";
 
 const Header = () => {
     // if (typeof window !== "undefined") {
@@ -13,15 +14,25 @@ const Header = () => {
 
     const { navigation } = header;
     return (
-        <header className="sticky top-0 z-50 mx-auto my-6 flex h-16 w-full max-w-7xl items-center gap-4 bg-background px-8 md:px-6">
+        <header className="sticky top-0 z-50 mx-auto my-6 flex h-20 w-full max-w-7xl items-center gap-4 bg-background px-8 md:px-6">
             <nav className="hidden w-full flex-col gap-8 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
                 <div className="flex w-full justify-between">
                     <Link
                         href="/"
                         className="flex items-center gap-2 text-lg font-semibold md:text-base"
                     >
-                        <Package2 className="h-6 w-6" />
-                        <span className="text-wrap text-base font-extrabold lg:text-lg">
+                        {/* <Package2 className="h-6 w-6" /> */}
+                        <div className="relative mx-4 my-auto aspect-square w-10 py-2">
+                            <Image
+                                src={"/logo.svg"}
+                                // width={40}
+                                // height={40}
+                                fill={true}
+                                alt="logo"
+                                className="m-1 my-auto rounded-xl"
+                            />
+                        </div>
+                        <span className="text-wrap py-2 text-base font-extrabold lg:text-lg">
                             DevopsDynamics
                         </span>
                     </Link>
@@ -35,7 +46,7 @@ const Header = () => {
                         })}
                         <Link
                             href={`/contact`}
-                            className="rounded-full bg-black px-3 py-2 text-xl font-semibold text-white dark:bg-white dark:text-black md:text-base"
+                            className="shrink rounded-full bg-black px-3 py-3 align-middle text-xl font-semibold text-white dark:bg-white dark:text-black md:text-base"
                         >
                             Contact
                         </Link>
