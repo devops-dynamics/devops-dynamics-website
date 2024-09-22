@@ -1,3 +1,4 @@
+import Profile from "@/components/Profile";
 import db from "@/db/db";
 import React from "react";
 
@@ -18,17 +19,20 @@ async function ProfilePage({ params }: { params: { id: string } }) {
     console.log("Profile: ", profile);
 
     return (
-        <div className="grid grid-cols-3">
-            <div className="bg-red-200">
-                <p>{profile?.display_name}</p>
-                <p>{profile?.bio}</p>
-                <p>{profile?.email}</p>
-                <p></p>
-                <p></p>
-                <p></p>
-            </div>
-            <div className=""></div>
-        </div>
+        <>
+            <Profile />
+            {/* <div className="grid grid-cols-3">
+                <div className="bg-red-200">
+                    <p>{profile?.display_name}</p>
+                    <p>{profile?.bio}</p>
+                    <p>{profile?.email}</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+                <div className=""></div>
+            </div> */}
+        </>
     );
 }
 
