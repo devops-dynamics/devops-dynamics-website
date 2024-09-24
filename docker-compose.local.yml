@@ -1,0 +1,13 @@
+services:
+  devops-dynamics-website:
+    container_name: devops-dynamics-website-local
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
