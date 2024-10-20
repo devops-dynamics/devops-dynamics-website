@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { addProject } from "../../_actions/project";
+import { addProject, updateProject } from "../../_actions/project";
 import { Project, User } from "@prisma/client";
 import { useFormState, useFormStatus } from "react-dom";
 import { Input } from "@/components/ui/input";
@@ -23,8 +23,10 @@ const ProjectForm = ({
     userId?: string | null;
 }) => {
     const [error, action] = useFormState(
-        addProject.bind(null, userId ? userId : ""),
-        // project == null ? addProject.bind(null, userId) : editProject.bind(null, project.id),
+        // addProject.bind(null, userId ? userId : ""),
+        project == null
+            ? addProject.bind(null, userId ? userId : "")
+            : updateProject.bind(null, project.id),
         {},
     );
 

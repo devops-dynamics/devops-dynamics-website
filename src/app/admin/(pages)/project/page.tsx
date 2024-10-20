@@ -12,6 +12,7 @@ import Link from "next/link";
 import { PageHeader } from "../../_components/Header/PageHeader";
 import { Button } from "@/components/ui/button";
 import { getUserId } from "../../_utils/token";
+import DeleteProject from "../../_components/Buttons/DeleteProject";
 
 const page = () => {
     return (
@@ -53,7 +54,7 @@ async function ProjectTable() {
         },
     });
 
-    if (projects.length === 0) return <p>No blogs found</p>;
+    if (projects.length === 0) return <p>No projects found</p>;
 
     return (
         <Table>
@@ -67,13 +68,16 @@ async function ProjectTable() {
                 {projects.map((project) => (
                     <TableRow key={project.id}>
                         <TableCell>{project.title}</TableCell>
-                        <TableCell>
-                            {/* <Link
-                                href={`/admin/user/${user.id}/edit`}
-                                className="hover:underline"
-                            >
-                                Edit
-                            </Link> */}
+                        <TableCell className="space-x-4">
+                            <DeleteProject id={project.id} />
+                            <Button asChild>
+                                <Link
+                                    href={`/admin/project/${project.id}/edit`}
+                                    className="hover:underline"
+                                >
+                                    Edit
+                                </Link>
+                            </Button>
                             {/* <span className="mx-2 cursor-pointer rounded bg-red-800 p-1 text-center font-bold text-white hover:bg-red-600">
                                 Delete
                             </span> */}

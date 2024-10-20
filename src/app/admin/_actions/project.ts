@@ -82,3 +82,13 @@ export async function updateProject(
         throw error;
     }
 }
+
+export async function deleteProject(id: string) {
+    try {
+        await db.project.delete({ where: { id } });
+        revalidatePath("/admin/project");
+    } catch (error) {
+        console.error("Error deleting project:", error);
+        throw error;
+    }
+}
