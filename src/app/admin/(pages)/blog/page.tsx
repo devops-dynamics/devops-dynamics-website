@@ -12,6 +12,7 @@ import Link from "next/link";
 import { PageHeader } from "../../_components/Header/PageHeader";
 import { Button } from "@/components/ui/button";
 import { getUserId } from "../../_utils/token";
+import DeleteBlog from "../../_components/Buttons/DeleteBlog";
 
 const page = () => {
     return (
@@ -68,12 +69,13 @@ async function BlogTable() {
                 {blogs.map((blog) => (
                     <TableRow key={blog.id}>
                         <TableCell>{blog.title}</TableCell>
-                        <TableCell>
+                        <TableCell className="space-x-4">
                             <Button asChild>
                                 <Link href={`/admin/blog/${blog.id}/edit`}>
                                     Edit
                                 </Link>
                             </Button>
+                            <DeleteBlog id={blog.id} />
                             {/* <span className="mx-2 cursor-pointer rounded bg-red-800 p-1 text-center font-bold text-white hover:bg-red-600">
                                 Delete
                             </span> */}

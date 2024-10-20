@@ -18,11 +18,9 @@ const page = () => {
         <div>
             <PageHeader>
                 <span>Projects</span>
-                <Link href={`/admin/user/new`}>
-                    <Button asChild>
-                        <Link href={`/admin/project/new`}>Add New Project</Link>
-                    </Button>
-                </Link>
+                <Button asChild>
+                    <Link href={`/admin/project/new`}>Add New Project</Link>
+                </Button>
             </PageHeader>
             <ProjectTable />
         </div>

@@ -125,20 +125,15 @@ export const updateUser = async (
 export const deleteUser = async (id: string) => {
     try {
         const user = await db.user.findUnique({
-            where: { id },
-            select: {
-                profile: {
-                    select: {
-                        id: true,
-                    },
-                },
-            },
+            where: { id: id },
+            select: { profile: { select: { id: true } } },
+            // include: { profile: { include: { blogs: true, projects: true } } }, // Load related data
         });
 
         if (!user || !user.profile?.id) return notFound();
 
-        await db.user.delete({ where: { id } });
         await db.profile.delete({ where: { id: user.profile.id } });
+        // await db.user.delete({ where: { id } });
 
         revalidatePath("/admin/user");
         redirect("/admin/user");

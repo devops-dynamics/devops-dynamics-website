@@ -11,7 +11,8 @@ import {
 import Link from "next/link";
 import { PageHeader } from "../../_components/Header/PageHeader";
 import { Button } from "@/components/ui/button";
-import { deleteUser } from "../../_actions/user";
+import DeleteUser from "../../_components/Buttons/DeleteUser";
+import { getUserRole } from "../../_utils/token";
 
 const page = () => {
     return (
@@ -43,6 +44,7 @@ async function UserTable() {
     // console.log(users);
 
     if (users.length === 0) return <p>No users found</p>;
+    const userRole = getUserRole();
 
     return (
         <Table>
@@ -76,11 +78,7 @@ async function UserTable() {
                                     Edit
                                 </Link>
                             </Button>
-                            <Button asChild variant={"destructive"}>
-                                <Link href={`/admin/user/${user.id}/delete`}>
-                                    Delete
-                                </Link>
-                            </Button>
+                            {/* <DeleteUser id={user.id} role={userRole} /> */}
                         </TableCell>
                     </TableRow>
                 ))}
