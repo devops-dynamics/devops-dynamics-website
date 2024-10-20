@@ -12,15 +12,36 @@ async function ProfilePage({ params }: { params: { id: string } }) {
             blogs: {
                 select: {
                     id: true,
+                    title: true,
+                    description: true,
+                },
+            },
+            projects: {
+                select: {
+                    id: true,
+                    title: true,
+                    description: true,
                 },
             },
         },
     });
     console.log("Profile: ", profile);
 
+    if (!profile) {
+        return (
+            <div>
+                <p>Profile not found</p>
+            </div>
+        );
+    }
+
     return (
         <>
-            <Profile />
+            <Profile
+                profile={profile}
+                blogs={profile.blogs}
+                projects={profile.projects}
+            />
             {/* <div className="grid grid-cols-3">
                 <div className="bg-red-200">
                     <p>{profile?.display_name}</p>
