@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent } from "react";
+import React, { useState, FormEvent, memo } from "react";
 import { Button, Label } from "@/components/ui";
 import {
     Select,
@@ -11,116 +11,10 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { Input } from "@/components/ui/input";
 
-const page = () => {
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
-        console.log(formData);
-    };
-    return (
-        <>
-            <div className="space-y-16">
-                {/* Heading */}
-                <div className="space-y-4">
-                    <h1 className="text-md font-semibold">Contact Us</h1>
-                    <h2 className="text-5xl">Let us Work Together</h2>
-                    <p className="text-base font-semibold text-muted-foreground">
-                        We cant wait to hear from you.
-                    </p>
-                </div>
-                {/* form + contacts */}
-                <div className="flex w-full flex-col gap-x-12 gap-y-8 lg:flex-row lg:gap-y-12">
-                    {/* enquiry form */}
-                    <div className="w-full space-y-8 lg:w-1/2">
-                        {/* Our Offices */}
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-semibold">Location</h3>
-                            <p className="text-base font-semibold text-muted-foreground">
-                                Puna, India
-                            </p>
-                        </div>
-                        {/* Email Us */}
-                        <Separator />
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-semibold">Email Us</h3>
-                            <p className="text-base font-semibold text-muted-foreground">
-                                hello@devopsdynamics.com
-                            </p>
-                        </div>
-                        <Separator />
-                        {/* Follow Us On - Social Media Icons */}
-                        <div className="space-y-4">
-                            <h3 className="text-2xl font-semibold">Socials</h3>
-                            <p className="text-base font-semibold text-muted-foreground">
-                                hello@devopsdynamics.com
-                            </p>
-                        </div>
-                    </div>
-                    <form onSubmit={handleSubmit} className="w-full lg:w-1/2">
-                        <div className="w-full space-y-6 rounded-lg border-2 border-muted-foreground py-4 dark:border-muted">
-                            <EnquiryFormInput
-                                type="email"
-                                placeholder="Email"
-                                name="email"
-                            />
-                            <EnquiryFormInput
-                                type="text"
-                                placeholder="Name"
-                                name="Name"
-                            />
-                            <EnquiryFormInput
-                                type="text"
-                                placeholder="Phone"
-                                name="Phone"
-                            />
-                            <EnquiryFormInput
-                                type="text"
-                                placeholder="Message"
-                                name="Message"
-                            />
-
-                            <div className="space-y-2 p-2">
-                                <Label className="font-semibold text-muted-foreground">
-                                    Budget
-                                </Label>
-                                <Select>
-                                    <SelectTrigger className="w-[180px]">
-                                        <SelectValue
-                                            className=""
-                                            placeholder="Select you budget"
-                                        />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            <SelectLabel>Fruits</SelectLabel>
-                                            <SelectItem value="apple">
-                                                Apple
-                                            </SelectItem>
-                                            <SelectItem value="banana">
-                                                Banana
-                                            </SelectItem>
-                                            <SelectItem value="blueberry">
-                                                Blueberry
-                                            </SelectItem>
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </div>
-                        </div>
-                        <Button variant={"destructive"} className="mx-2 my-2">
-                            Send
-                        </Button>
-                    </form>
-                    {/* contacts */}
-                    <div />
-                </div>
-            </div>
-        </>
-    );
-};
-
-const EnquiryFormInput = ({
+// Memoized input component for better performance
+const EnquiryFormInput = memo(({
     type,
     placeholder,
     name,
@@ -138,16 +32,152 @@ const EnquiryFormInput = ({
                 <input
                     type={type}
                     id={name}
+                    name={name}
                     placeholder={placeholder}
                     className="peer h-8 w-full border-none bg-transparent p-2 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
                 />
-
                 <span className="absolute start-0 top-2 -translate-y-1/2 pl-2 text-xs font-semibold text-muted-foreground transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs">
                     {placeholder}
                 </span>
             </label>
         </div>
     );
+});
+
+// Add display name for memo component
+EnquiryFormInput.displayName = 'EnquiryFormInput';
+
+const ContactPage = () => {
+    const [selectedBudget, setSelectedBudget] = useState<string>("");
+    const [customBudget, setCustomBudget] = useState<string>("");
+
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        formData.append("budget", selectedBudget === "custom" ? customBudget : selectedBudget);
+        
+        try {
+            // Add your form submission logic here
+            console.log(Object.fromEntries(formData.entries()));
+        } catch (error) {
+            console.error('Form submission error:', error);
+        }
+    };
+
+    const handleSelectChange = (value: string) => {
+        setSelectedBudget(value);
+        if (value !== "custom") {
+            setCustomBudget("");
+        }
+    };
+
+    return (
+        <div className="space-y-16">
+            {/* Heading */}
+            <div className="space-y-4">
+                <h1 className="text-md font-semibold">Contact Us</h1>
+                <h2 className="text-5xl">Let us Work Together</h2>
+                <p className="text-base font-semibold text-muted-foreground">
+                    We can&apos;t wait to hear from you.
+                </p>
+            </div>
+
+            {/* form + contacts */}
+            <div className="flex w-full flex-col gap-x-12 gap-y-8 lg:flex-row lg:gap-y-12">
+                {/* Contact Information */}
+                <div className="w-full space-y-8 lg:w-1/2">
+                    <ContactSection 
+                        title="Location" 
+                        content="Pune, India" 
+                    />
+                    <Separator />
+                    <ContactSection 
+                        title="Email Us" 
+                        content="contact@devops-dynamics.com" 
+                    />
+                    <Separator />
+                    <ContactSection 
+                        title="Socials" 
+                        content="contact@devops-dynamics.com" 
+                    />
+                </div>
+
+                {/* Form */}
+                <form onSubmit={handleSubmit} className="w-full lg:w-1/2">
+                    <div className="w-full space-y-6 rounded-lg border-2 border-muted-foreground py-4 dark:border-muted">
+                        <EnquiryFormInput
+                            type="email"
+                            placeholder="Email"
+                            name="email"
+                        />
+                        <EnquiryFormInput
+                            type="text"
+                            placeholder="Name"
+                            name="name"
+                        />
+                        <EnquiryFormInput
+                            type="tel"
+                            placeholder="Phone"
+                            name="phone"
+                        />
+                        <EnquiryFormInput
+                            type="text"
+                            placeholder="Message"
+                            name="message"
+                        />
+
+                        <div className="space-y-2 p-2">
+                            <Label className="font-semibold text-muted-foreground">
+                                Budget
+                            </Label>
+                            <Select value={selectedBudget} onValueChange={handleSelectChange}>
+                                <SelectTrigger className="w-[180px]">
+                                    <SelectValue placeholder="Select your budget" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        <SelectLabel>Budget</SelectLabel>
+                                        <SelectItem value="1000">Less than $1,001</SelectItem>
+                                        <SelectItem value="1001">$1,001 - $5,000</SelectItem>
+                                        <SelectItem value="5000">$5,001 - $15,000</SelectItem>
+                                        <SelectItem value="15000">$15,001 and above</SelectItem>
+                                        <SelectItem value="custom">Custom</SelectItem>
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+
+                            {selectedBudget === "custom" && (
+                                <div className="mt-4">
+                                    <Input
+                                        type="number"
+                                        value={customBudget}
+                                        onChange={(e) => setCustomBudget(e.target.value)}
+                                        placeholder="Enter custom budget"
+                                        className="w-full rounded-3xl bg-gradient-to-r from-blue-950 to-slate-800 p-4 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/20"
+                                    />
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    <Button variant="destructive" className="mt-4" type="submit">
+                        Send
+                    </Button>
+                </form>
+            </div>
+        </div>
+    );
 };
 
-export default page;
+// Memoized contact section component
+const ContactSection = memo(({ title, content }: { title: string; content: string }) => (
+    <div className="space-y-4">
+        <h3 className="text-2xl font-semibold">{title}</h3>
+        <p className="text-base font-semibold text-muted-foreground">
+            {content}
+        </p>
+    </div>
+));
+
+ContactSection.displayName = 'ContactSection';
+
+export default ContactPage;
