@@ -22,7 +22,7 @@ const Header = () => {
                     >
                         <Package2 className="h-6 w-6" />
                         <span className="text-wrap text-base font-extrabold lg:text-lg">
-                            DevopsDynamics
+                            DevOps Dynamics
                         </span>
                     </Link>
                     <div className="float-right flex space-x-8">

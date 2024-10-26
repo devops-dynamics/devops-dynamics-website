@@ -11,7 +11,7 @@ const AboutPage = () => {
         {
             name: "Suyash Bhawsar",
             position: "DevOps Engineer",
-            imageSrc: "/team/suyash.jpg"
+            imageSrc: "/team/Suyash.jpg"
         },
         {
             name: "Vrushali Kudande",
@@ -26,7 +26,7 @@ const AboutPage = () => {
         {
             name: "Sanchari Mandal",
             position: "Full Stack Developer",
-            imageSrc: "/team/Vrushali.jpeg"
+            imageSrc: "/team/Sanchari.JPEG",
         },
         {
             name: "Rutuja Kolate",

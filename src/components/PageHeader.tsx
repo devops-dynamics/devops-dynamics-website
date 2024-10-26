@@ -13,10 +13,13 @@ function PageHeader({
 }) {
     return (
         <div className="my-16 space-y-8 xl:my-20">
-            <h1 className="text-base font-bold">{pageHeaderTitle}</h1>
-            <h2 className="max-w-xl text-5xl font-light xl:max-w-2xl xl:text-7xl">
+            <h1 className="text-base font-bold">
+                {pageHeaderTitle}
+            </h1>
+            {/* Subtitle with smaller text sizes */}
+            <h4 className="font-display text-3xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-4xl md:text-5xl lg:text-6xl">
                 {pageHeaderSubtitle}
-            </h2>
+            </h4>
             <h3 className="max-w-2xl text-base font-medium text-muted-foreground xl:text-lg">
                 {pageHeaderDescription}
             </h3>

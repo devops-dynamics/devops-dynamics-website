@@ -10,7 +10,7 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
     title: "DevOps Dynamics",
-    description: "Devops Dynamics",
+    description: "DevOps Dynamics",
 };
 
 export default function Layout({
