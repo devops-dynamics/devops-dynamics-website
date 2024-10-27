@@ -5,35 +5,39 @@ import React from "react";
 
 function BlogCard({ blog }: { blog: Blog }) {
     const { id, image, title, author_id, description } = blog;
+
     return (
         <article className="relative m-6 overflow-hidden rounded-lg shadow transition hover:shadow-lg hover:outline hover:outline-white md:m-4">
-            {/* <div className="left-0 top-16 z-10 overflow-hidden rounded-lg border border-white shadow transition hover:shadow-lg"> */}
-
-            {/* </div> */}
-            <div className="relative h-52 w-full overflow-hidden">
+            {/* Blog Cover Image */}
+            <div className="relative h-52 w-full">
                 <Image
-                    alt=""
-                    className="overflow-hidden object-cover"
-                    src={`/placeholder.avif`}
-                    fill={true}
+                    alt="Blog cover image"
+                    src={image || "/placeholder2.avif"}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (min-width: 769px) 50vw"
+                    priority
                 />
             </div>
-            <div className="border-3 absolute right-4 top-40 z-10 h-[80px] w-[80px] rounded-full">
+
+            {/* Author Image */}
+            <div className="absolute right-4 top-40 z-10 h-[80px] w-[80px] rounded-full border-2 border-white shadow-md">
                 <Image
-                    src={"/user.jpeg"}
-                    alt=""
-                    fill={true}
+                    src={`/team/Suyash.jpg`}
+                    alt="Author profile picture"
+                    fill
                     className="rounded-full object-cover"
+                    sizes="80px"
                 />
             </div>
 
-            <div className="space-y-4 bg-background bg-slate-50 px-4 py-8 text-foreground dark:bg-slate-900 sm:p-6">
+            {/* Blog Content */}
+            <div className="space-y-4 bg-slate-50 px-4 py-8 dark:bg-slate-900 sm:p-6">
                 <time
                     dateTime="2022-10-10"
-                    className="block text-xs text-slate-700 dark:text-gray-200"
+                    className="block text-xs text-slate-700 dark:text-gray-400"
                 >
-                    {" "}
-                    10th Oct 2022{" "}
+                    10th Oct 2022
                 </time>
 
                 <Link href={`/blogs/${id}`}>
@@ -42,7 +46,7 @@ function BlogCard({ blog }: { blog: Blog }) {
                     </h3>
                 </Link>
 
-                <p className="mt-2 line-clamp-3 h-24 text-sm/relaxed text-slate-700 dark:text-gray-200">
+                <p className="mt-2 line-clamp-3 h-24 text-sm text-slate-700 dark:text-gray-300">
                     {description}
                 </p>
             </div>

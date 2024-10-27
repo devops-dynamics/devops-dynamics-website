@@ -28,60 +28,24 @@ const header = {
 
 const footer = {
     services: [
-        {
-            title: "Company Review",
-            link: "#",
-        },
-        {
-            title: "Accounts Review",
-            link: "#",
-        },
-        {
-            title: "HR Consulting",
-            link: "#",
-        },
-        {
-            title: "SEO Optimisation",
-            link: "#",
-        },
+        { title: "Company Review", link: "#" },
+        { title: "Accounts Review", link: "#" },
+        { title: "HR Consulting", link: "#" },
+        { title: "SEO Optimisation", link: "#" },
     ],
     company: [
-        {
-            title: "About",
-            link: "#",
-        },
-        {
-            title: "Meet the Team",
-            link: "#",
-        },
+        { title: "About", link: "#" },
+        { title: "Meet the Team", link: "#" },
     ],
     helpfulLinks: [
-        {
-            title: "Contact",
-            link: "#",
-        },
-        {
-            title: "FAQs",
-            link: "#",
-        },
+        { title: "Contact", link: "#" },
+        { title: "FAQs", link: "#" },
     ],
     legal: [
-        {
-            title: "Accessibility",
-            link: "#",
-        },
-        {
-            title: "Returns Policy",
-            link: "#",
-        },
-        {
-            title: "Refund Policy",
-            link: "#",
-        },
-        {
-            title: "Hiring Statistics",
-            link: "#",
-        },
+        { title: "Accessibility", link: "#" },
+        { title: "Returns Policy", link: "#" },
+        { title: "Refund Policy", link: "#" },
+        { title: "Hiring Statistics", link: "#" },
     ],
 };
 
@@ -100,7 +64,6 @@ const about = {
             revenue: "Over $6k in revenue",
         },
     },
-    // ... rest of about data
 };
 
 const services = {
@@ -111,58 +74,62 @@ const services = {
     servicesDetails: [
         {
             id: 1,
-            title: "DevOps & Solutions Architecture :",
+            title: "DevOps & Solutions Architecture:",
             description:
-                "Our team specializes in designing and implementing scalable DevOps solutions that align with your business goals. We leverage tools like Docker, Kubernetes, Jenkins, Terraform, and Ansible to ensure your infrastructure is resilient and adaptable.",
+                "Whether you’re running an enterprise or just starting out, our DevOps solutions keep your operations efficient, reliable, and scalable. We use tools like Docker, Kubernetes, Jenkins, and Terraform to ensure that your infrastructure supports your business goals",
         },
-        
         {
             id: 2,
-            title: "Web Development:",
+            title: "Web Development for Local Businesses:",
             description:
-                "We craft beautiful, functional websites and applications using the latest technologies such as React, Next.js, and Node.js. Whether it's a marketing site or a complex web application, we have the expertise to deliver exceptional results.",
+                "From shop owners to real estate agents, we build user-friendly, modern websites that attract customers and grow your business. Using the latest technologies like React, Next.js, and Node.js, we create tailored websites that work for you.",
         },
         {
             id: 3,
-            title: "Network & System Administration:",
+            title: "SEO Optimization",
             description:
-                "From configuring high-performance servers to managing complex cloud environments, our system administration services ensure your IT infrastructure is secure, reliable, and efficient.",
+                "Make sure your business gets found by the right customers. Our SEO services boost your website’s ranking on search engines like Google, helping you attract more clients in your local area.",
         },
         {
             id: 4,
+            title: "Network & System Administration:",
+            description:
+                "Whether it's a local server or a cloud solution, we manage your IT infrastructure so it’s secure, efficient, and always up and running. We handle everything from system setup to performance optimization, giving you peace of mind.",
+        },
+        {
+            id: 5,
             title: "Custom Content Management:",
             description:
-                "Tailored solutions for managing your digital content, ensuring it’s accessible, secure, and easy to update. We integrate with popular CMS platforms and build custom solutions when needed.",
+                "We provide easy-to-manage, secure content management systems (CMS) for your business. Whether it’s a basic site or a custom platform, we make updating your content simple and stress-free.",
         },
-        // ... rest of your services
     ],
     faq: [
         {
             id: 1,
             question: "What is your refund policy?",
-            answer: "Refunds are handled on a case-by-case basis, depending on the project's terms and conditions."
+            answer: "Refunds are handled on a case-by-case basis, depending on the project's terms and conditions.",
         },
         {
             id: 2,
             question: "How long does it take to complete a project?",
-            answer: "Project timelines vary based on scope and complexity. We work closely with clients to meet agreed deadlines."
+            answer: "Project timelines vary based on scope and complexity. We work closely with clients to meet agreed deadlines.",
         },
         {
             id: 3,
             question: "Do you offer custom packages?",
-            answer: "Yes, we tailor our services to fit the unique needs and goals of each client."
+            answer: "Yes, we tailor our services to fit the unique needs and goals of each client.",
         },
         {
             id: 4,
             question: "What payment methods do you accept?",
-            answer: "We accept payments via Wise and bank transfers."
+            answer: "We accept payments via Wise and bank transfers.",
         },
         {
             id: 5,
             question: "Do you offer ongoing support?",
-            answer: "Yes, we provide ongoing support to ensure your systems and applications run smoothly."
-        }
-    ]
+            answer: "Yes, we provide ongoing support to ensure your systems and applications run smoothly.",
+        },
+    ],
 };
 
 const works = {
@@ -172,9 +139,7 @@ const works = {
         description:
             "We believe in efficiency and maximizing our resources to provide the best value to our clients.",
     },
-    workDetails: [
-        // ... work details
-    ],
+    workDetails: [],
 };
 
 const contact = {
@@ -191,7 +156,6 @@ const contact = {
 
 const homePage = {
     header: {
-        
         subtitle: "DevOps & Web Development Agency based in Pune, India.",
         description:
             "At DevOps Dynamics, we are committed to transforming your business with cutting-edge DevOps practices, infrastructure management, and web development solutions.",
@@ -219,7 +183,7 @@ const homePage = {
             "FSCL",
             "Idea 2 Collective GmbH",
             "Steve Taylor",
-        ]
+        ],
     },
     works: {
         title: "Some of our works",
@@ -228,8 +192,10 @@ const homePage = {
             "We harness technology to deliver impactful solutions, keeping your business competitive in an ever-changing digital landscape.",
     },
     testimonial: {
-        quote: "Harnessing TechnologAt DevOps Dynamics, we are committed to transforming your business with cutting-edge DevOps practices, infrastructure management, and web development solutions. Our mission is to bridge the gap between development and operations, ensuring seamless deployments, scalable infrastructures, and optimized performance for your projects.y for Business Excellence.",
-        companyName: "DevOps Dynamics"
+        review: "An extremely cooperative and resourceful agency that consistently goes above and beyond to support their clients. Demonstrates impressive knowledge, adaptability, and professionalism, making them a trusted partner in any project. Has my full recommendation and endorsement.",
+        companyName: "Kristo Kuuse",
+        company: "(Voog Signage OÜ)",
+        clientImage: "/clients/kristo.png"
     },
     services: {
         title: "Services",
