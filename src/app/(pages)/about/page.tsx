@@ -11,12 +11,12 @@ const AboutPage = () => {
         {
             name: "Suyash Bhawsar",
             position: "DevOps Engineer",
-            imageSrc: "/team/Suyash.jpg"
+            imageSrc: "/team/suyash.jpg"
         },
         {
             name: "Vrushali Kudande",
             position: "Linux SysAdmin",
-            imageSrc: "/team/Vrushali.jpg"
+            imageSrc: "/team/vrushali.jpg"
         },
         {
             name: "Sairaj Jawalikar",
@@ -26,7 +26,7 @@ const AboutPage = () => {
         {
             name: "Sanchari Mandal",
             position: "Full Stack Developer",
-            imageSrc: "/team/Sanchari.jpg",
+            imageSrc: "/team/sanchari.jpg",
         },
         {
             name: "Rutuja Kolate",
@@ -39,7 +39,7 @@ const AboutPage = () => {
         {
             heading: "Loyalty",
             description:
-                "Our team has been with us since the beginning because none of them are allowed to have LinkedIn profiles.",
+                "Our team has been with us since the beginning (no LinkedIn allowed—just kidding!).",
         },
         {
             heading: "Innovation",
