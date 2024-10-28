@@ -6,20 +6,24 @@ function PageHeader({
     pageHeaderDescription,
     children,
 }: {
-    pageHeaderTitle: string;
+    pageHeaderTitle?: string;
     pageHeaderSubtitle: string;
     pageHeaderDescription: string;
     children?: React.ReactNode;
 }) {
     return (
         <div className="my-16 space-y-8 xl:my-20">
-            <h1 className="text-base font-bold">{pageHeaderTitle}</h1>
-            <h2 className="max-w-xl text-5xl font-light xl:max-w-2xl xl:text-7xl">
+            {pageHeaderTitle && (
+                <h1 className="text-base leading-7 font-semibold">
+                    {pageHeaderTitle}
+                </h1>
+            )}
+            <h2 className="text-[3.75rem] leading-none font-semibold w-[85%] min-w-[1000px] xl:w-[800px]">
                 {pageHeaderSubtitle}
             </h2>
-            <h3 className="max-w-2xl text-base font-medium text-muted-foreground xl:text-lg">
+            <p className="text-xl leading-8 text-muted-foreground w-[50%] min-w-[750px] xl:w-[600px]">
                 {pageHeaderDescription}
-            </h3>
+            </p>
             {children}
         </div>
     );
