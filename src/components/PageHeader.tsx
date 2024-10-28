@@ -21,7 +21,7 @@ function PageHeader({
             <h2 className="text-[3.75rem] leading-none font-semibold w-[85%] min-w-[1000px] xl:w-[800px]">
                 {pageHeaderSubtitle}
             </h2>
-            <p className="text-xl leading-8 text-muted-foreground w-[50%] min-w-[750px] xl:w-[600px]">
+            <p className="text-xl leading-8 text-muted-foreground w-[50%] min-w-[750px] xl:w-[650px]">
                 {pageHeaderDescription}
             </p>
             {children}
