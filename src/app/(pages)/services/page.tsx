@@ -15,7 +15,7 @@ const page = () => {
 
             <div className="max-w-lg space-y-12">
                 <h1 className="text-md font-bold">{header.title}</h1>
-                <h2 className="text-5xl">{header.description}</h2>
+                <h2 className="text-[3.75rem] leading-none font-semibold w-[85%] min-w-[1000px] xl:w-[800px]">{header.description}</h2>
                 <p className="text-base font-semibold text-muted-foreground">
                     We cant wait to hear from you.
                 </p>

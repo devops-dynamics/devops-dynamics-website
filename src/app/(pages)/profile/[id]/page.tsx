@@ -54,6 +54,7 @@ async function ProfilePage({ params }: { params: { id: string } }) {
                 <div className=""></div>
             </div> */}
         </>
+
     );
 }
 

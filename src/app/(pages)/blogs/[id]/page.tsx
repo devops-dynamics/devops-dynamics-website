@@ -39,7 +39,7 @@ const page = async ({ params }: { params: { id: string } }) => {
             <div className="flex gap-x-4 text-muted-foreground">
                 <div className="flex w-full items-center justify-center gap-4">
                     <Image
-                        src={"/placeholder-user.jpg"}
+                        src={"/user.jpeg"}
                         alt="user-image"
                         height={52}
                         width={52}
