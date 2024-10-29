@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import ThemeToggle from "./ThemeToggle";
 import { header } from "@/constants/staticData";
 import NavLink from "./NavLink";
+import Image from "next/image";
 
 const Header = () => {
     // if (typeof window !== "undefined") {
@@ -20,7 +21,7 @@ const Header = () => {
                         href="/"
                         className="flex items-center gap-2 text-lg font-semibold md:text-base"
                     >
-                        <Package2 className="h-6 w-6" />
+                        <Image src="/logo.png" alt="DevopsDynamics Logo" width={40} height={40} className="m-1 my-auto rounded-xl"/>
                         <span className="text-wrap text-base font-extrabold lg:text-lg">
                             DevopsDynamics
                         </span>
