@@ -67,12 +67,12 @@ const AboutPage = () => {
                 </div>
             </PageHeader>
 
-            <div className="my-16 min-h-96 w-full space-y-4 rounded-xl bg-[#4B4EFC] p-10 text-white outline outline-8 outline-[#4B4EFC]">
+            <div className="my-16 min-h-96 w-full space-y-4 rounded-xl bg-foreground p-10 text-background outline outline-8 outline-foreground">
                 <h4 className="font-bold">Our culture</h4>
                 <h1 className="text-3xl font-semibold">
                     Balance your passion <br /> with your passion for life.
                 </h1>
-                <p className="font-semibold text-white/80">
+                <p className="font-semibold text-muted">
                     We are a group of like-minded people who share the same core values.
                 </p>
                 <div className="flex max-w-5xl flex-col justify-between space-y-8 py-12 lg:flex-row lg:space-y-0">
@@ -88,7 +88,7 @@ const AboutPage = () => {
                                 />
                                 <Separator
                                     orientation="vertical"
-                                    className="h-14 w-[2px] bg-white/50"
+                                    className="h-14 w-[2px] bg-muted-foreground"
                                 />
                             </div>
                             <p className="text-medium max-w-64 text-wrap">
