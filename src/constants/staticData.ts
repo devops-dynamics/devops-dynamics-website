@@ -106,9 +106,9 @@ const header = {
 
 const footer = {
     services: [
-        { title: "Company Review", link: "#" },
-        { title: "Accounts Review", link: "#" },
-        { title: "HR Consulting", link: "#" },
+        { title: "DevOps", link: "#" },
+        { title: "Web Development", link: "#" },
+        { title: "System Administration", link: "#" },
         { title: "SEO Optimisation", link: "#" },
     ],
     company: [
@@ -258,12 +258,14 @@ const homePage: HomePage = {
         title: "We have worked with numerous amazing people",
         clients: [
             "Voog Signage OÜ",
-            "Software Assemblies",
-            "MojoCore",
             "Erium",
-            "Roster Metrics",
             "Liberatum Solutions Ltd",
             "Ah Scaffolding Pte. Ltd.",
+            "FSCL",
+            "Roster Metrics",
+            "Idea 2 Collective GmbH",
+            "Software Assemblies",
+            "MojoCore",
             "Calnera LLC",
             "Diwank Tomer",
             "Fady Heiba",
@@ -274,8 +276,6 @@ const homePage: HomePage = {
             "Atoz S",
             "Jatin Jasoliya",
             "Rony Joseph",
-            "FSCL",
-            "Idea 2 Collective GmbH",
         ],
     },
     works: {
