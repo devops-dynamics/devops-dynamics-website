@@ -185,34 +185,34 @@ const ProjectCard = ({
     const isOngoing = project.status?.toLowerCase().includes('progress');
 
     return (
-        <div className="space-y-16">
+        <div className="space-y-8 sm:space-y-12 lg:space-y-16">
             <div className="h-px w-full bg-border" />
 
-            <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-[250px_1fr]">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-[250px_1fr] lg:gap-x-16">
                 {/* Left Column */}
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                     <div className="space-y-1">
                         <div className="flex items-center gap-3">
-                            <div className="h-11 w-11 rounded-full bg-purple-600" />
+                            <div className="h-8 w-8 sm:h-10 sm:w-10 lg:h-11 lg:w-11 rounded-full bg-purple-600" />
                             {isOngoing && (
-                                <span className="rounded-full bg-green-600/10 px-3 py-1 text-sm font-medium text-green-600">
+                                <span className="rounded-full bg-green-600/10 px-2 py-0.5 sm:px-3 sm:py-1 text-xs sm:text-sm font-medium text-green-600">
                                     Active
                                 </span>
                             )}
                         </div>
                     </div>
                     <div className="space-y-4">
-                        <div className="space-y-2">
-                            <p className="text-sm text-muted-foreground">Duration</p>
-                            <p className="font-medium">{project.projectDuration}</p>
+                        <div className="space-y-1 sm:space-y-2">
+                            <p className="text-xs sm:text-sm text-muted-foreground">Duration</p>
+                            <p className="text-sm sm:text-base font-medium">{project.projectDuration}</p>
                         </div>
-                        <div className="space-y-2">
-                            <p className="text-sm text-muted-foreground">Technologies</p>
-                            <div className="flex flex-wrap gap-2">
+                        <div className="space-y-1 sm:space-y-2">
+                            <p className="text-xs sm:text-sm text-muted-foreground">Technologies</p>
+                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                 {project.technologiesUsed.map((tech, index) => (
                                     <span
                                         key={index}
-                                        className="rounded-full bg-slate-100 px-3 py-1 text-sm font-medium dark:bg-slate-800"
+                                        className="rounded-full bg-slate-100 px-2 py-0.5 sm:px-3 sm:py-1 text-xs sm:text-sm font-medium dark:bg-slate-800"
                                     >
                                         {tech}
                                     </span>
@@ -223,16 +223,16 @@ const ProjectCard = ({
                 </div>
 
                 {/* Right Column */}
-                <div className="space-y-8">
-                    <div className="space-y-4">
-                        <h3 className="text-2xl font-medium">{project.title}</h3>
+                <div className="space-y-6 sm:space-y-8">
+                    <div className="space-y-3 sm:space-y-4">
+                        <h3 className="text-xl sm:text-2xl font-medium leading-tight">{project.title}</h3>
                         {project.description && (
-                            <p className="max-w-2xl text-muted-foreground">
+                            <p className="text-sm sm:text-base max-w-2xl text-muted-foreground">
                                 {project.description}
                             </p>
                         )}
                         {project.projectOutcome && (
-                            <p className="max-w-2xl text-muted-foreground">
+                            <p className="text-sm sm:text-base max-w-2xl text-muted-foreground">
                                 {project.projectOutcome}
                             </p>
                         )}
@@ -240,10 +240,10 @@ const ProjectCard = ({
 
                     {project.deliverables && project.deliverables.length > 0 && (
                         <div className="space-y-2">
-                            <p className="font-medium">Deliverables:</p>
-                            <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+                            <p className="text-sm sm:text-base font-medium">Deliverables:</p>
+                            <ul className="list-inside list-disc space-y-1 text-sm sm:text-base text-muted-foreground">
                                 {project.deliverables.map((deliverable, index) => (
-                                    <li key={index}>{deliverable}</li>
+                                    <li key={index} className="pl-1">{deliverable}</li>
                                 ))}
                             </ul>
                         </div>
@@ -251,21 +251,21 @@ const ProjectCard = ({
 
                     {project.technicalApproach && project.technicalApproach.length > 0 && (
                         <div className="space-y-2">
-                            <p className="font-medium">Technical Approach:</p>
-                            <ul className="list-inside list-disc space-y-1 text-muted-foreground">
+                            <p className="text-sm sm:text-base font-medium">Technical Approach:</p>
+                            <ul className="list-inside list-disc space-y-1 text-sm sm:text-base text-muted-foreground">
                                 {project.technicalApproach.map((approach, index) => (
-                                    <li key={index}>{approach}</li>
+                                    <li key={index} className="pl-1">{approach}</li>
                                 ))}
                             </ul>
                         </div>
                     )}
 
                     {project.feedback && (
-                        <blockquote className="space-y-4 border-l-2 border-purple-600 pl-6">
-                            <p className="italic text-muted-foreground">
+                        <blockquote className="space-y-3 sm:space-y-4 border-l-2 border-purple-600 pl-4 sm:pl-6">
+                            <p className="text-sm sm:text-base italic text-muted-foreground">
                                 &ldquo;{project.feedback}&rdquo;
                             </p>
-                            <footer className="text-sm font-medium">
+                            <footer className="text-xs sm:text-sm font-medium">
                                 Client Feedback
                             </footer>
                         </blockquote>
@@ -278,23 +278,23 @@ const ProjectCard = ({
 
 export default function Page() {
     return (
-        <div className="space-y-32 px-4 py-16 md:px-6 lg:px-8">
+        <div className="container mx-auto space-y-16 sm:space-y-24 lg:space-y-32 px-4 py-8 sm:py-12 md:py-16 md:px-6 lg:px-8">
             {/* Hero Section */}
-            <section className="space-y-8">
-                <span className="text-lg font-medium">Our Portfolio</span>
-                <h1 className="max-w-4xl text-6xl font-semibold tracking-tight">
+            <section className="space-y-4 sm:space-y-6 lg:space-y-8">
+                <span className="text-base sm:text-lg font-medium">Our Portfolio</span>
+                <h1 className="max-w-4xl text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
                     DevOps Solutions & System Administration
                 </h1>
-                <p className="max-w-2xl text-lg text-muted-foreground">
+                <p className="max-w-2xl text-base sm:text-lg text-muted-foreground">
                     Specializing in Linux systems, containerization, and infrastructure automation.
                     Delivering robust solutions for real-world technical challenges.
                 </p>
             </section>
 
             {/* All Projects Section */}
-            <section className="space-y-16">
-                <h2 className="text-4xl font-semibold">Case Studies</h2>
-                <div className="space-y-32">
+            <section className="space-y-8 sm:space-y-12 lg:space-y-16">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold">Case Studies</h2>
+                <div className="space-y-16 sm:space-y-24 lg:space-y-32">
                     {allProjects.map((project, index) => (
                         <ProjectCard
                             key={index}
