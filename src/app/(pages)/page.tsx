@@ -19,7 +19,7 @@ interface ServiceCardProps {
 
 function ProjectCard({ project }: ProjectCardProps) {
     const { year, title, description } = project;
-    
+
     return (
         <div className="w-full rounded-lg bg-card p-6 border border-muted hover:border-muted-foreground/50 hover:bg-muted transition-all duration-300 backdrop-blur-sm">
             <div className="mb-4 flex items-center space-x-2">
@@ -132,9 +132,9 @@ function HomePage() {
                     pageHeaderDescription={services.description}
                 />
                 <div className="flex flex-col items-center md:flex-row">
-                    <div className="relative h-[400px] w-full overflow-hidden rounded-3xl md:w-1/2">
+                    <div className="relative h-[500px] w-full overflow-hidden rounded-3xl md:w-1/2">
                         <Image
-                            src="/services.jpeg"
+                            src="/home-services.png"
                             alt="Services illustration"
                             fill
                             className="object-cover"

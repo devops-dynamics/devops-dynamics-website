@@ -11,13 +11,7 @@ git clone https://github.com/devops-dynamics/devops-dynamics-website
 cd devops-dynamics-website
 ```
 
-## 2. Run this command to install all the dependencies
-
-```
-npm install
-```
-
-## 3. Configure environment variables
+## 2. Configure environment variables
 
 Create a `.env.local` file in the root directory and add your environment variables.
 
@@ -31,22 +25,31 @@ Create a `.env.local` file in the root directory and add your environment variab
 
 _You can follow the `.env.example` file._
 
-## 4. Run the development server
-
-```
-npm run dev
-```
-
--   ## To build the application run the following command
+## 3. Run the development server (with live reloading)
+-   ## To remove the dev container with volumes, run the following command
 
     ```
-    npm run build
+    docker-compose -f docker-compose.local.yml --profile dev down --volumes --remove-orphans
     ```
 
--   ## To start the server run the following command
+-   ## To start the application container run the following command
 
     ```
-    npm run start
+    docker-compose -f docker-compose.local.yml --profile dev up
+    ```
+
+## 4. Build & run the production server (without live reloading)
+
+-   ## To remove the prod container with volumes, run the following command
+
+    ```
+    docker-compose -f docker-compose.local.yml --profile build down --volumes --remove-orphans
+    ```
+
+-   ## To build and start the container run the following command
+
+    ```
+    docker-compose -f docker-compose.local.yml --profile build up
     ```
 
 # Additional Information
@@ -107,17 +110,7 @@ To manually trigger the workflow:
 2. Select the “Staging - Build Docker Image” workflow.
 3. Click on the “Run workflow” button and specify the branch and commit ID to use in the image tag.
 
-## 2. Running Tests Locally
-
-Before pushing your code, run tests locally to catch any issues early:
-
-```bash
-npm test
-```
-
-Make sure all tests pass before pushing your changes.
-
-## 3. Reviewing the Workflow Status
+## 2. Reviewing the Workflow Status
 
 After pushing your code, review the status of the GitHub Actions workflow:
 
@@ -125,7 +118,7 @@ After pushing your code, review the status of the GitHub Actions workflow:
 - Select the relevant workflow run to see the details.
 - Review the logs to ensure the build and tests have passed.
 
-## 4. Debugging Failures
+## 3. Debugging Failures
 
 If the workflow fails:
 

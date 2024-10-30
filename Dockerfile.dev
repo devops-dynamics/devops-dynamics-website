@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+
+WORKDIR /app
+
+# Copy only package.json, pnpm-lock.yaml and Prisma schema for dependency installation
+COPY package.json pnpm-lock.yaml ./
+COPY prisma/schema.prisma ./prisma/
+RUN npm install -g pnpm && pnpm install
+
+EXPOSE 3000
+
+# Run in development mode
+CMD ["pnpm", "dev"]

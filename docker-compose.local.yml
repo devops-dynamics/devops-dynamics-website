@@ -1,13 +1,35 @@
 services:
-  devops-dynamics-website:
-    container_name: devops-dynamics-website-local
+  devops-dynamics-website-dev:
+    container_name: devops-dynamics-website-dev
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev  # Use Dockerfile.dev for development
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app  # Sync code with container for live updates
+      - /app/node_modules  # Prevent node_modules conflicts
+    command: ["pnpm", "dev"]
     healthcheck:
       test: ["CMD-SHELL", "wget --spider http://localhost:3000"]
       interval: 30s
       timeout: 10s
       retries: 3
+    profiles:
+      - dev
+
+  devops-dynamics-website-build:
+    container_name: devops-dynamics-website-build
+    build:
+      context: .
+      dockerfile: Dockerfile  # Use production Dockerfile
+    ports:
+      - "3000:3000"
+    command: ["pnpm", "start"]
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    profiles:
+      - build
