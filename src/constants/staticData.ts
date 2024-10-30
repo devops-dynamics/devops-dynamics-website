@@ -1,6 +1,82 @@
-import { title } from "process";
-import { date } from "zod";
+// Interfaces for type safety
+interface WorkDetail {
+    id: number;
+    title: string;
+    description: string;
+    image: string;
+    company: string;
+    service: string | string[];
+    link?: string;
+    date: string;
+    testimonial?: {
+        name: string;
+        position: string;
+        testimonial: string;
+    };
+}
 
+interface Works {
+    header: {
+        title: string;
+        subTitle: string;
+        description: string;
+    };
+    workDetails: WorkDetail[];
+}
+
+interface ServiceDetail {
+    id: number;
+    title: string;
+    description: string;
+}
+
+interface Project {
+    year: string;
+    title: string;
+    description: string;
+}
+
+interface NavigationLink {
+    id: number;
+    title: string;
+    path: string;
+}
+
+interface FooterLink {
+    title: string;
+    link: string;
+}
+
+interface HomePage {
+    header: {
+        subtitle: string;
+        description: string;
+    };
+    workedWith: {
+        title: string;
+        clients: string[];
+    };
+    works: {
+        title: string;
+        subtitle: string;
+        description: string;
+        projects: Project[];
+    };
+    testimonial: {
+        review: string;
+        companyName: string;
+        company: string;
+        clientImage: string;
+    };
+    services: {
+        title: string;
+        subtitle: string;
+        description: string;
+        serviceDetails: ServiceDetail[];
+    };
+}
+
+// Define all data objects
 const header = {
     navigation: {
         links: [
@@ -30,67 +106,27 @@ const header = {
 
 const footer = {
     services: [
-        {
-            title: "Company Review",
-            link: "#",
-        },
-        {
-            title: "Accounts Review",
-            link: "#",
-        },
-        {
-            title: "HR Consulting",
-            link: "#",
-        },
-        {
-            title: "SEO Optimisation",
-            link: "#",
-        },
+        { title: "DevOps", link: "#" },
+        { title: "Web Development", link: "#" },
+        { title: "System Administration", link: "#" },
+        { title: "SEO Optimisation", link: "#" },
     ],
-
     company: [
-        {
-            title: "About",
-            link: "#",
-        },
-        {
-            title: "Meet the Team",
-            link: "#",
-        },
+        { title: "About", link: "#" },
+        { title: "Meet the Team", link: "#" },
     ],
-
     helpfulLinks: [
-        {
-            title: "Contact",
-            link: "#",
-        },
-        {
-            title: "FAQs",
-            link: "#",
-        },
+        { title: "Contact", link: "#" },
+        { title: "FAQs", link: "#" },
     ],
-
     legal: [
-        {
-            title: "Accessibility",
-            link: "#",
-        },
-        {
-            title: "Returns Policy",
-            link: "#",
-        },
-        {
-            title: "Refund Policy",
-            link: "#",
-        },
-        {
-            title: "Hiring Statistics",
-            link: "#",
-        },
+        { title: "Accessibility", link: "#" },
+        { title: "Returns Policy", link: "#" },
+        { title: "Refund Policy", link: "#" },
+        { title: "Hiring Statistics", link: "#" },
     ],
 };
 
-// for about page
 const about = {
     header: {
         title: "Our strength is collaboration",
@@ -100,122 +136,49 @@ const about = {
     impact: {
         title: "Our Impact",
         stats: {
-            employees: "100",
-            clients: "15 satisfied clients",
+            employees: "5",
+            clients: "100+ satisfied clients",
             projects: "Over 16 successful projects",
-            revenue: "Over $5k in revenue",
+            revenue: "Over $6k in revenue",
         },
-    },
-    introduction: {
-        title: "Unlock your potential with DevOps Dynamics",
-        description:
-            "Founded by Suyash Bhawsar, DevOps Dynamics is committed to delivering top-notch DevOps and Web Development services. Our team of experts works diligently to ensure that every project is a success, from initial consultation to final deployment.",
-    },
-    leadership: [
-        {
-            name: "Suyash Bhawsar",
-            position: "Founder & DevOps Engineer",
-            link: "https://www.linkedin.com/in/suyashbhawsar",
-            image: "/user.jpeg",
-            description:
-                "Suyash is a seasoned DevOps Engineer and Linux System Administrator with a passion for technology and innovation. He holds an AWS Certified Solutions Architect - Associate certification and a Bachelor of Engineering in Computer Engineering.",
-        },
-        {
-            name: "Vrushali Kudande",
-            position: "Linux SysAdmin",
-            link: "https://www.linkedin.com/in/janedoe",
-            image: "/user.jpeg",
-            description:
-                "Vrushali oversees the business operations and ensures that all client projects are managed efficiently and effectively.",
-        },
-        {
-            name: "Sanchari Mandal",
-            position: "Web Developer",
-            link: "https://www.linkedin.com/in/johnsmith",
-            image: "/user.jpeg",
-            description:
-                "Sanchari brings fresh ideas and innovative solutions to the team, helping to drive our projects forward.",
-        },
-    ],
-    team: [
-        {
-            name: "Suyash Bhawsar",
-            position: "Founder & DevOps Engineer",
-            link: "https://www.linkedin.com/in/suyashbhawsar",
-            image: "/user.jpeg",
-            description:
-                "Suyash is a seasoned DevOps Engineer and Linux System Administrator with a passion for technology and innovation. He holds an AWS Certified Solutions Architect - Associate certification and a Bachelor of Engineering in Computer Engineering.",
-        },
-        {
-            name: "Vrushali Kudande",
-            position: "Linux SysAdmin",
-            link: "https://www.linkedin.com/in/janedoe",
-            image: "/user.jpeg",
-            description:
-                "Vrushali oversees the business operations and ensures that all client projects are managed efficiently and effectively.",
-        },
-        {
-            name: "Sanchari Mandal",
-            position: "Web Developer",
-            link: "https://www.linkedin.com/in/johnsmith",
-            image: "/user.jpeg",
-            description:
-                "Sanchari brings fresh ideas and innovative solutions to the team, helping to drive our projects forward.",
-        },
-    ],
-    values: {
-        title: "Balance Your Passion with Our Passion for Life",
-        description:
-            "We are a group of like-minded people who share the same core values",
-        coreValues: [
-            {
-                title: "loyalty",
-                description: "Our team has been with us since the start.",
-            },
-            {
-                title: "trust",
-                description: "We don't have various human resources.",
-            },
-            {
-                title: "compassion",
-                description: "You never know what someone is going through.",
-            },
-        ],
     },
 };
 
-// for services page
 const services = {
     header: {
         title: "Our Services",
-        description:
-            "Our enthusiasm is rooted in advancing our knowledge and mastery in the artistic domain",
+        description: "A One-Stop Solution for Your Digital Needs",
     },
-
     servicesDetails: [
         {
             id: 1,
             title: "DevOps & Solutions Architecture",
             description:
-                "We design and implement scalable, automated infrastructure tailored to your business.",
+                "We streamline your operations with tools like Docker, Kubernetes, and Jenkins, ensuring your systems are efficient, reliable, and scalable.",
         },
         {
             id: 2,
-            title: "Web Development",
+            title: "Web Development for Local Businesses",
             description:
-                "Our developers create responsive, user-friendly web applications that meet your business needs.",
+                "Our modern, user-friendly websites attract more customers to your business. We build tailored sites using the latest technologies.",
         },
         {
             id: 3,
-            title: "Network & System Administration",
+            title: "SEO Optimization",
             description:
-                "We optimize and manage server environments for maximum reliability and performance.",
+                "Boost your visibility on search engines like Google to help local customers find you and drive more traffic to your site.",
         },
         {
             id: 4,
-            title: "CI/CD Pipeline Implementation",
+            title: "Network & System Administration",
             description:
-                "We streamline your development process with efficient CI/CD pipeline setups.",
+                "We manage your IT infrastructure, ensuring it’s secure, efficient, and always running, whether it’s on-premises or in the cloud.",
+        },
+        {
+            id: 5,
+            title: "Custom Content Management",
+            description:
+                "Our CMS solutions make it easy to update your site, providing a secure, manageable platform tailored to your business needs.",
         },
     ],
     faq: [
@@ -232,7 +195,7 @@ const services = {
         {
             id: 3,
             question: "Do you offer custom packages?",
-            answer: "Yes, we tailor our services to fit the unique needs and goals of each client..",
+            answer: "Yes, we tailor our services to fit the unique needs and goals of each client.",
         },
         {
             id: 4,
@@ -247,10 +210,35 @@ const services = {
     ],
 };
 
-// contact information
+const works: Works = {
+    header: {
+        title: "Our Works",
+        subTitle: "Proven solutions for real-world problems",
+        description:
+            "We believe in efficiency and maximizing our resources to provide the best value to our clients.",
+    },
+    workDetails: [
+        {
+            id: 1,
+            title: "Fleet Management System Automation",
+            description: "Faced with a complex infrastructure challenge, we implemented a tailored Puppet infrastructure to streamline fleet management. By developing custom scripts and CI/CD integration, we ensured reliable and scalable operations across diverse environments.",
+            image: "/works/fleet.jpg",
+            company: "Transport Co.",
+            service: "DevOps Infrastructure",
+            date: "2024",
+            testimonial: {
+                name: "John Smith",
+                position: "CTO, Transport Co.",
+                testimonial: "DevOps Dynamics delivered an exceptional fleet management solution that significantly improved our operations."
+            }
+        },
+        // More work details can be added here
+    ]
+};
+
 const contact = {
     email: "suyash@devops-dynamics.com",
-    phone: "",
+    phone: "+91 9763030376",
     address: "Pune, India",
     social: {
         twitter: "",
@@ -260,119 +248,72 @@ const contact = {
     },
 };
 
-// for work page
-const works = {
+const homePage: HomePage = {
     header: {
-        title: "Our Works",
-        subTitle: "Proven solutions for real-world problems",
-        description:
-            "We believe in efficiency and maximizing our resources to provide the best value to our clients. The primary way we do that is by re-using the same five projects we’ve been developing for the past decade.",
-    },
-    workDetails: [
-        {
-            id: 1,
-            title: "Brand Identity",
-            description:
-                "We help you create a brand identity that resonates with your target audience.",
-            image: "/brand-identity.jpg",
-            company: "Company A",
-            service: "Web Development",
-            date: "January 2023",
-            link: "#",
-            testimonial: {
-                name: "John Doe",
-                position: "CEO, Company A",
-                testimonial:
-                    "DevOps Dynamics has been a valuable partner in helping us create a brand identity that resonates with our target audience. Their team of experts has been instrumental in helping us achieve our goals and drive results.",
-            },
-        },
-        {
-            id: 2,
-            title: "Web Development",
-            description:
-                "Our team of expert web developers will bring your vision to life.",
-            image: "/web-development.jpg",
-            company: "Company B",
-            service: "Web Development, CMS",
-            date: "February 2023",
-            testimonial: {
-                name: "Jane Doe",
-                position: "CEO, Company B",
-                testimonial:
-                    "DevOps Dynamics has been a valuable partner in helping us create a brand identity that resonates with our target audience. Their team of experts has been instrumental in helping us achieve our goals and drive results.",
-            },
-        },
-    ],
-};
-
-const homePage = {
-    header: {
-        title: "Welcome to DevOps Dynamics",
         subtitle: "DevOps & Web Development Agency based in Pune, India.",
         description:
-            "At DevOps Dynamics, we are committed to transforming your business with cutting-edge DevOps practices, infrastructure management, and web development solutions. Our mission is to bridge the gap between development and operations, ensuring seamless deployments, scalable infrastructures, and optimized performance for your projects.",
+            "At DevOps Dynamics, we are committed to transforming your business with cutting-edge DevOps practices, infrastructure management, and web development solutions.",
     },
     workedWith: {
-        title: "We've worked with",
+        title: "We have worked with numerous amazing people",
         clients: [
-            {
-                name: "Company A",
-                image: "/company-a.jpg",
-            },
-            {
-                name: "Company B",
-                image: "/company-b.jpg",
-            },
-            {
-                name: "Company C",
-                image: "/company-c.jpg",
-            },
-            {
-                name: "Company D",
-                image: "/company-d.jpg",
-            },
-            {
-                name: "Company E",
-                image: "/company-d.jpg",
-            },
-            {
-                name: "Company F",
-                image: "/company-d.jpg",
-            },
-            {
-                name: "Company D",
-                image: "/company-d.jpg",
-            },
-            {
-                name: "Company D",
-                image: "/company-d.jpg",
-            },
-            {
-                name: "Company D",
-                image: "/company-d.jpg",
-            },
+            "Voog Signage OÜ",
+            "Erium",
+            "Liberatum Solutions Ltd",
+            "Ah Scaffolding Pte. Ltd.",
+            "FSCL",
+            "Roster Metrics",
+            "Idea 2 Collective GmbH",
+            "Software Assemblies",
+            "MojoCore",
+            "Calnera LLC",
+            "Diwank Tomer",
+            "Fady Heiba",
+            "Keith Nezner",
+            "Urick Ladonis",
+            "Ahmad Alm",
+            "Thomas Reilly",
+            "Atoz S",
+            "Jatin Jasoliya",
+            "Rony Joseph",
         ],
     },
     works: {
         title: "Some of our works",
-        subtitle: "Proven solutions for real-world problems",
-        description:
-            "We believe technology is the answer to the world’s greatest challenges. It’s also the cause, so we find ourselves in bit of a catch 22 situation.",
-        workDetails: works.workDetails,
+        subtitle: "Transforming businesses with DevOps and web solutions for seamless performance.",
+        description: "We harness technology to deliver impactful solutions, keeping your business competitive in an ever-changing digital landscape.",
+        projects: [
+            {
+                year: "2024",
+                title: "Fleet Management System Automation",
+                description: "Faced with a complex infrastructure challenge, we implemented a tailored Puppet infrastructure to streamline fleet management. By developing custom scripts and CI/CD integration, we ensured reliable and scalable operations across diverse environments.",
+            },
+            {
+                year: "2023",
+                title: "Custom Ubuntu ISO for Blockchain Nodes",
+                description: "We led the customization of an Ubuntu ISO, optimized for seamless blockchain node deployment. Our solution reduced deployment time and improved node performance, enhancing overall operational efficiency.",
+            },
+            {
+                year: "2024",
+                title: "Dotfiles Management & SSH Key Automation",
+                description: "Developed a secure and efficient system for managing dotfiles and SSH keys using Ansible. This project standardized development environments, improving security and reducing setup errors across macOS and Linux systems.",
+            },
+        ]
     },
     testimonial: {
-        quote: "The team at Studio went above and beyond with our onboarding, even finding a way to access the user’s microphone without triggering one of those annoying permission dialogs.",
-        companyName: "Phobia",
-        companyLogo: "/company-a.jpg",
+        review: "An extremely cooperative and resourceful agency that consistently goes above and beyond to support their clients. Demonstrates impressive knowledge, adaptability, and professionalism, making them a trusted partner in any project. Has my full recommendation and endorsement.",
+        companyName: "Kristo Kuuse",
+        company: "(Voog Signage OÜ)",
+        clientImage: "/clients/kristo.png"
     },
     services: {
         title: "Services",
-        subtitle:
-            "We help you identify, explore and respond to new opportunities.",
-        description:
-            "As long as those opportunities involve giving us money to re-purpose old projects — we can come up with an endless number of those.",
+        subtitle: "We help you innovate, optimize, and succeed in a fast-paced digital world.",
+        description: "As long as those opportunities involve giving us money to re-purpose old projects — we can come up with an endless number of those.",
         serviceDetails: services.servicesDetails,
     },
 };
 
-export { header, footer, about, services, works, homePage, contact };
+// Single export statement for all data and types
+export type { ServiceDetail, Project, HomePage, NavigationLink, FooterLink, WorkDetail, Works};
+export { header, footer, about, services, works, contact, homePage };

@@ -60,9 +60,7 @@ const Footer = () => {
                             </div>
 
                             <p className="mt-4 max-w-xs text-gray-500 dark:text-gray-400">
-                                Lorem ipsum dolor, sit amet consectetur
-                                adipisicing elit. Esse non cupiditate quae nam
-                                molestias.
+                            We deliver scalable, secure DevOps and Web Development solutions tailored to your business needs.
                             </p>
 
                             <ul className="mt-8 flex gap-6">
