@@ -62,7 +62,7 @@ const AboutPage = () => {
             >
                 <div className="flex max-w-5xl flex-wrap justify-between gap-8">
                     <BlockQuote heading="5" subheading="Underpaid Employees" />
-                    <BlockQuote heading="$7K+" subheading="Invoices billed" />
+                    <BlockQuote heading="5/5" subheading="Client Rating" />
                     <BlockQuote heading="26" subheading="Placated clients" />
                 </div>
             </PageHeader>
