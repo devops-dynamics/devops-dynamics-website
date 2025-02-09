@@ -2,6 +2,8 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
+RUN apk update && apk add --no-cache openssl
+
 # Copy package.json and package-lock.json first for caching
 COPY package.json pnpm-lock.yaml ./
 
