@@ -63,6 +63,7 @@ jobs:
           script: |
             echo "Fetching and updating the Docker Compose file"
             curl -o docker-compose.staging.yml ${{ env.COMPOSE_FILE_URL }}
+            sed -i 's|    ports:\n      - "3000:3000"|    ports:\n      - "3001:3000"|' docker-compose.staging.yml
             sed -i "s|image:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:amd64-${{ env.BRANCH_NAME }}-${{ env.COMMIT_ID }}|g" docker-compose.staging.yml
 
       - name: Deploy updated Docker Compose
