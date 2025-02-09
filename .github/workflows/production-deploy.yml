@@ -45,9 +45,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Removing existing Docker containers, images, and volumes related to the previous compose setup"
-            docker compose -f docker-compose.yml down --rmi all --volumes || true
+            docker compose -f docker-compose.production.yml down --rmi all --volumes || true
             docker system prune -f
-            rm -f docker-compose.yml
+            rm -f docker-compose.production.yml
 
       - name: Fetch new Docker Compose file and update it
         uses: appleboy/ssh-action@v1.0.3
@@ -58,8 +58,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Fetching and updating the Docker Compose file"
-            curl -o docker-compose.yml ${{ env.COMPOSE_FILE_URL }}
-            sed -i "s|image:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:arm64-${{ env.BRANCH_NAME }}-${{ env.COMMIT_ID }}|g" docker-compose.yml
+            curl -o docker-compose.production.yml ${{ env.COMPOSE_FILE_URL }}
+            sed -i "s|image:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:arm64-${{ env.BRANCH_NAME }}-${{ env.COMMIT_ID }}|g" docker-compose.production.yml
 
       - name: Deploy updated Docker Compose
         uses: appleboy/ssh-action@v1.0.3
@@ -70,5 +70,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Deploying updated Docker Compose"
-            docker compose -f docker-compose.yml pull devops-dynamics-website
-            docker compose -f docker-compose.yml up -d devops-dynamics-website
+            docker compose -f docker-compose.production.yml pull devops-dynamics-website
+            docker compose -f docker-compose.production.yml up -d devops-dynamics-website
