@@ -76,5 +76,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Deploying updated Docker Compose"
-            docker compose -f docker-compose.staging.yml pull devops-dynamics-website
-            docker compose -f docker-compose.staging.yml up -d devops-dynamics-website
+            docker compose -f docker-compose.staging.yml pull devops-dynamics-website-staging
+            docker compose -f docker-compose.staging.yml up -d devops-dynamics-website-staging
