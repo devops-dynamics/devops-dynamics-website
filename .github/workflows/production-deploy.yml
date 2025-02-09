@@ -59,6 +59,7 @@ jobs:
           script: |
             echo "Fetching and updating the Docker Compose file"
             curl -o docker-compose.production.yml ${{ env.COMPOSE_FILE_URL }}
+            sed -i 's|  devops-dynamics-website:|  devops-dynamics-website-production:|' docker-compose.production.yml
             sed -i "s|image:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:amd64-${{ env.BRANCH_NAME }}-${{ env.COMMIT_ID }}|g" docker-compose.production.yml
 
       - name: Deploy updated Docker Compose
@@ -70,5 +71,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             echo "Deploying updated Docker Compose"
-            docker compose -f docker-compose.production.yml pull devops-dynamics-website
-            docker compose -f docker-compose.production.yml up -d devops-dynamics-website
+            docker compose -f docker-compose.production.yml pull devops-dynamics-website-production
+            docker compose -f docker-compose.production.yml up -d devops-dynamics-website-production
