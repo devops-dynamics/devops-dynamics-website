@@ -12,7 +12,7 @@ COPY prisma/schema.prisma ./prisma/
 
 # Install dependencies
 RUN npm install -g pnpm
-RUN pnpm install & pnpm add sharp
+RUN pnpm install && pnpm add sharp
 
 # Copy the rest of the application code
 COPY .env .
