@@ -2,6 +2,8 @@ FROM node:lts-alpine
 
 WORKDIR /app
 
+RUN apk update && apk add --no-cache openssl
+
 # Copy only package.json, pnpm-lock.yaml and Prisma schema for dependency installation
 COPY package.json pnpm-lock.yaml ./
 COPY prisma/schema.prisma ./prisma/
