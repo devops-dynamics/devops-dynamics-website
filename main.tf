@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     oci = {
-      source = "oracle/oci"
+      source  = "oracle/oci"
       version = "6.25.0"
     }
   }
@@ -13,17 +13,6 @@ provider "oci" {
   private_key  = replace(var.private_key, "\\n", "\n")
   fingerprint  = var.fingerprint
   region       = var.region
-}
-
-# IAM Policy to Manage VCNs
-resource "oci_identity_policy" "manage_vcn" {
-  name           = "ManageVCN"
-  description    = "Allow group ${var.oci_group_name} to manage virtual-network-family in compartment ${var.compartment_id}"
-  compartment_id = var.tenancy_ocid
-
-  statements = [
-    "Allow group ${var.oci_group_name} to manage virtual-network-family in tenancy"
-  ]
 }
 
 # Create Virtual Cloud Network (VCN)
@@ -63,7 +52,7 @@ resource "oci_core_security_list" "devops_security_list" {
 
   # Allow inbound SSH
   ingress_security_rules {
-    protocol    = "6" # TCP
+    protocol    = "6"
     source      = "0.0.0.0/0"
     source_type = "CIDR_BLOCK"
 
@@ -104,7 +93,7 @@ resource "oci_core_security_list" "devops_security_list" {
   }
 }
 
-# Create Subnet for Compute Instance
+# Create Subnet for Compute Instances
 resource "oci_core_subnet" "devops_subnet" {
   compartment_id        = var.compartment_id
   vcn_id               = oci_core_vcn.devops_dynamics_vcn.id
@@ -121,12 +110,12 @@ data "oci_identity_availability_domains" "ads" {
   compartment_id = var.tenancy_ocid
 }
 
-# Create AMD Compute Instance
-resource "oci_core_instance" "amd_server" {
+# Create AMD Compute Instance for Production
+resource "oci_core_instance" "prod_server" {
   compartment_id      = var.compartment_id
   availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
-  shape              = "VM.Standard.E2.1.Micro" # 1 OCPUs, 1 GB RAM
-  display_name       = "amd-server"
+  shape              = "VM.Standard.E2.1.Micro"
+  display_name       = "prod-server"
 
   create_vnic_details {
     subnet_id        = oci_core_subnet.devops_subnet.id
@@ -139,6 +128,28 @@ resource "oci_core_instance" "amd_server" {
   }
 
   metadata = {
-    ssh_authorized_keys = replace(var.ssh_public_keys, "\\n", "\n") #var.ssh_public_keys
+    ssh_authorized_keys = replace(var.ssh_public_keys, "\\n", "\n")
+  }
+}
+
+# Create AMD Compute Instance for Staging
+resource "oci_core_instance" "staging_server" {
+  compartment_id      = var.compartment_id
+  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
+  shape              = "VM.Standard.E2.1.Micro"
+  display_name       = "staging-server"
+
+  create_vnic_details {
+    subnet_id        = oci_core_subnet.devops_subnet.id
+    assign_public_ip = true
+  }
+
+  source_details {
+    source_type = "image"
+    source_id   = var.image_ocid
+  }
+
+  metadata = {
+    ssh_authorized_keys = replace(var.ssh_public_keys, "\\n", "\n")
   }
 }
