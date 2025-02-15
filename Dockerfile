@@ -15,7 +15,6 @@ RUN npm install -g pnpm
 RUN pnpm install && pnpm add sharp
 
 # Copy the rest of the application code
-COPY .env .
 COPY . .
 
 # Build the application
