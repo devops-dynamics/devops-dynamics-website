@@ -268,7 +268,6 @@ const homePage: HomePage = {
             "MojoCore",
             "Calnera LLC",
             "Diwank Tomer",
-            "Fady Heiba",
             "Keith Nezner",
             "Urick Ladonis",
             "Ahmad Alm",
